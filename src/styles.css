@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
+
+*{
+    font-family: 'Bruno Ace', cursive;
+}
+
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; 
+}
+
+:root{
+    --White: #FFFFFF;
+    --LightBlue: #4C98E9;
+    --MidnightBlue: #0F1219;
+    --Gray: #555E69;
+    --Black: #000000;
+}
