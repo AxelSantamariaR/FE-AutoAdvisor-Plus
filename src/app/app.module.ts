@@ -13,6 +13,8 @@ import { ContactPageComponent } from './components/contact-page/contact-page.com
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { LoginComponent } from './modules/authentication/login/login.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CarsPageComponent } from './components/cars-page/cars-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LoginComponent } from './modules/authentication/login/login.component';
     ContactPageComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    PageNotFoundComponent,
+    CarsPageComponent
   ],
   imports: [
     BrowserModule,
