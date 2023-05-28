@@ -6,6 +6,7 @@ import { CarsPageComponent } from './components/cars-page/cars-page.component';
 import { AdvisorsPageComponent } from './components/advisors-page/advisors-page.component';
 import { UsedCarsPageComponent } from './components/used-cars-page/used-cars-page.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
+import { LoginComponent } from './modules/authentication/login/login.component';
 
 const routes: Routes = [
   { path:'',            redirectTo: 'home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'asesores',   component: AdvisorsPageComponent },
   { path: 'usados',     component: UsedCarsPageComponent },
   { path: 'nosotros',   component: ContactPageComponent },
+  { path: 'login',      component: LoginComponent},
   { path: '**',         component: PageNotFoundComponent}
 ];
 
