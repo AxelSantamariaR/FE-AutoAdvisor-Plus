@@ -1,3 +1,20 @@
 <app-navbar></app-navbar>
-<p>used-cars-page works!</p>
+
+<div class="container-fluid w-100">
+    <div class="row w-100 h-100">
+        <div class="col-3 ">
+          <div class="nav h-100 flex-column nav-tabs text-center p-1 justify-content-center">
+            <a class="nav-link" routerLink="/usados/">Home</a>
+            <a class="nav-link" routerLink="/usados/solicitar">Vender</a>
+            <a class="nav-link" routerLink="/usados/seguimiento">Seguimiento</a>
+            <a class="nav-link" routerLink="/usados/terminos">Terminos</a>
+          </div>
+        </div>
+      
+        <div class="col-9 p-3">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
 <app-footer></app-footer>

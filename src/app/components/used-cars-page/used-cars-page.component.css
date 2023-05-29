@@ -1,0 +1,7 @@
+.container-fluid{
+    height: 90vh;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}

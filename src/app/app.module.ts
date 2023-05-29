@@ -15,6 +15,10 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { LoginComponent } from './modules/authentication/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CarsPageComponent } from './components/cars-page/cars-page.component';
+import { UsadosTerminosPageComponent } from './layouts/usados-terminos-page/usados-terminos-page.component';
+import { UsadosSolicitarPageComponent } from './layouts/usados-solicitar-page/usados-solicitar-page.component';
+import { UsadosSeguimientoPageComponent } from './layouts/usados-seguimiento-page/usados-seguimiento-page.component';
+import { UsadosHomePageComponent } from './layouts/usados-home-page/usados-home-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { CarsPageComponent } from './components/cars-page/cars-page.component';
     FooterComponent,
     LoginComponent,
     PageNotFoundComponent,
-    CarsPageComponent
+    CarsPageComponent,
+    UsadosTerminosPageComponent,
+    UsadosSolicitarPageComponent,
+    UsadosSeguimientoPageComponent,
+    UsadosHomePageComponent
   ],
   imports: [
     BrowserModule,
