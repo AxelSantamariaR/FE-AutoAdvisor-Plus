@@ -1,5 +1,5 @@
 .navbar{
-    background: var(--MidnightBlue);
+    background-image: linear-gradient(to top, #543fff, #003fc7, #00348c, #002450, #0f1219);
 }
   
 a{

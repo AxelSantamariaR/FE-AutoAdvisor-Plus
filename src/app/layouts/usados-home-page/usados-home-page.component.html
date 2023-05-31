@@ -1,1 +1,11 @@
-<p>usados-home-page works!</p>
+<div class="container-fluid w-100 h-100">
+    <div class="col px-0 d-none d-sm-block">
+        <ngb-carousel  [interval]="5000">
+          <ng-template ngbSlide *ngFor="let img of images; index as i">
+            <div class="picsum-img-wrapper">
+                <img [src]="img" class="w-100" style="object-fit: cover; object-position: left;"/>
+            </div>
+          </ng-template>
+      </ngb-carousel>
+    </div>
+</div>

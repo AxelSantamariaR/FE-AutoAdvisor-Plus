@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./usados-home-page.component.css']
 })
 export class UsadosHomePageComponent {
-
+  images = ['used-home-banner-1', 'banner-dos'].map((n) => `assets/img/banners/${n}.png`);
 }

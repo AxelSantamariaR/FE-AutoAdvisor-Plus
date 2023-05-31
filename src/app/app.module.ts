@@ -19,6 +19,7 @@ import { UsadosTerminosPageComponent } from './layouts/usados-terminos-page/usad
 import { UsadosSolicitarPageComponent } from './layouts/usados-solicitar-page/usados-solicitar-page.component';
 import { UsadosSeguimientoPageComponent } from './layouts/usados-seguimiento-page/usados-seguimiento-page.component';
 import { UsadosHomePageComponent } from './layouts/usados-home-page/usados-home-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { UsadosHomePageComponent } from './layouts/usados-home-page/usados-home-
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
