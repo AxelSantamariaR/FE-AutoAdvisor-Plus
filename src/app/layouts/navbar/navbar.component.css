@@ -1,0 +1,60 @@
+.navbar{
+    background-image: linear-gradient(to top, #543fff, #003fc7, #00348c, #002450, #0f1219);
+}
+  
+a{
+    color: whitesmoke;
+}
+
+a:hover{
+    color: var(--White);
+}
+
+.fa-hamburger{
+    color: var(--MidnightBlue);
+}
+
+.navbar-toggler{
+    background-color: white;
+}
+
+.menu a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+  
+.menu a span {
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+  
+.menu a span:first-child {
+    display: inline-block;
+    padding: 5px;
+}
+  
+.menu a span:last-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+}
+  
+.menu i {
+    font-size: 17px;
+}
+
+.menu a:hover span:first-child {
+    transform: translateY(100%);
+}
+
+.menu a:hover span:last-child,
+.menu[data-animation] a:hover 
+span:last-child {
+    transform: none;
+}

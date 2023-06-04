@@ -1,0 +1,24 @@
+.container-fluid{
+    height: 90.5vh;    
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.card{
+    background: url("../../../assets/img/others/usados-banner-menu.svg") no-repeat center;
+    background-size: cover;
+}
+
+.nav-link:hover{
+    border: 1px solid var(--LightBlue);
+    border-radius: 80px 20px;
+}
+
+.nav-link:focus{
+    border: 1px solid var(--LightBlue);
+    border-radius: 80px 20px;
+    color: var(--White);
+    background-color: var(--LightBlue); 
+}

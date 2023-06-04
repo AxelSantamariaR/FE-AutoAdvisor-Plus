@@ -1,0 +1,24 @@
+footer{
+    background: url("../../../assets/img/others/footer.svg") no-repeat;
+    background-size: cover;
+    color: var(--White);
+}
+
+p{
+    font-size: x-small;
+}
+
+span{
+    color: var(--MidnightBlue);
+    font-size: x-small;
+}
+
+a{
+    color: #5e5858;
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--MidnightBlue);    
+    text-decoration: underline;
+}
