@@ -1,3 +1,45 @@
 <app-navbar></app-navbar>
-<p>home-page works!</p>
+<div class="portada">
+    <img class="img1" [src]="imagenPortada" alt="portada-imagen">
+</div>
+<div fxLayout="row">
+    <div fxFlex="50">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Bienvenidos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Somos un concesionario automotriz especializado en la venta de vehículos seminuevos de las marcas más prestigiosas. Nuestro enfoque se centra en brindar a nuestros clientes una experiencia personalizada respaldada por un equipo altamente capacitado. Nos esforzamos por generar la máxima confianza y seguridad en cada proceso de negociación. Valoramos la integridad, la responsabilidad, el respeto y la honestidad en todas nuestras interacciones.</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div fxFlex="50">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Filosofía</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>En AutoAdvisor Plus, , nuestros clientes son nuestra principal prioridad y orientamos todas nuestras acciones y resultados hacia su beneficio. Nos regimos por valores fundamentales e inquebrantables, tales como la integridad, la responsabilidad, el respeto, la honestidad, el compromiso y la orientación al servicio. Estos valores son pilares fundamentales en nuestra empresa y guían cada una de nuestras interacciones con nuestros clientes.</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <br>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-card class="container">
+      <div class="content">
+        <div class="text">
+          <h2><b>Cita Asesores</b></h2>
+          <p>Nuestro equipo de asesores altamente capacitados está listo para brindarte la mejor asesoría en la compra de tu próximo vehículo. Con un enfoque personalizado y amplio conocimiento del mercado automotriz, te garantizamos una experiencia confiable y segura. Estamos aquí para ayudarte a tomar la mejor decisión.</p>
+          <button class="boton-asesores"mat-raised-button>Cita Asesores</button>
+        </div>
+        <div class="image">
+          <img [src] = "imagenAsesores" alt="Descripción de la imagen">
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <br>
+
+  <br><br><br>
 <app-footer></app-footer>
