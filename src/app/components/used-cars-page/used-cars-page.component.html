@@ -1,19 +1,67 @@
-<app-navbar></app-navbar>
-
-<div class="container-fluid w-100">
-    <div class="row h-100 p-2 py-3">
-      <div class="col card border-0">
-        <div class="nav h-100 flex-column nav-tabs text-center p-1 justify-content-center">
-          <a class="nav-link" routerLink="/usados/">Home</a>
-          <a class="nav-link" routerLink="/usados/solicitar">Vender</a>
-          <a class="nav-link" routerLink="/usados/seguimiento">Seguimiento</a>
-          <a class="nav-link" routerLink="/usados/terminos">Terminos</a>
-        </div>
-      </div>      
-      <div class="col-9">
-          <router-outlet></router-outlet>
-      </div>
+<div class="container-fluid w-100 vh-100">
+    <div class="container-fluid container-top w-100 h-auto shadow mt-0">
+        <div class="container w-100">
+            <div class="card shadow-none border-0 rounded-0 bg-transparent">
+  
+                <div class="card-title d-flex justify-content-between mt-3">
+                    <div class="menu d-flex w-100 align-items-center">              
+                        <button class="btn btn-sm btn-menu" type="button" 
+                            data-bs-toggle="offcanvas" 
+                            data-bs-target="#offcanvasWithBothOptions" 
+                            aria-controls="offcanvasWithBothOptions">
+                            <mat-icon>menu</mat-icon>              
+                        </button>
+                        <span class="pb-1 text-menu">Menú</span>
+                    </div>
+                    <div class="menu d-flex w-100 align-items-center justify-content-center">              
+                        <button class="btn btn-sm btn-menu"  routerLink="/home">
+                            <mat-icon>directions_car</mat-icon>              
+                        </button>
+                        <span class="pb-1 text-menu">AutoAdvisor +</span>
+                    </div>
+                <div class="w-100"></div>
+            </div>
+  
+            <hr class="my-2 mb-3">
+  
+            <div class="container w-100 h-auto mt-2 mb-4">
+                <div class="row row-cols-1">
+                    <div class="col">
+                        <div class="card shadow-none border-0 bg-transparent">
+                            <div class="card-title">                  
+                                <span class="h1 title-description">
+                                    Vende tu auto usado con confianza y comodidad
+                                </span>
+                            </div>
+                            <div class="card-subtitle mt-1">
+                                <span>
+                                    Obtén la mejor oferta para tu auto usado en nuestro portal de compra y venta. Completa una solicitud de información y nuestros asesores especializados te brindarán la mejor atención y garantía en todo el proceso. ¡Haz negocio de manera fácil y segura!
+                                </span>
+                            </div>     
+                            <div class="card-footer shadow-none border-0 bg-transparent px-0">
+                                <div class="row mt-4 mb-2">
+                                    <div class="col">
+                                        <span class="footer-nota">
+                                            Nota: Nuestros asesores, luego de evaluar detalladamente tu auto, te enviarán un correo con una oferta personalizada y competitiva. Confía en nuestro equipo para obtener el mejor valor por tu vehículo usado. ¡No esperes más y comienza hoy mismo!
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>      
     </div>
 </div>
+    
+<div class="container-fluid w-100 h-auto py-5 pb-3">
+    <app-used-card-form></app-used-card-form>
+</div>
+  
+<div class="container-fluid w-100 h-auto pt-5">
+    <app-footer></app-footer>
+</div>
 
-<app-footer></app-footer>
+
+<app-nav-menu></app-nav-menu>

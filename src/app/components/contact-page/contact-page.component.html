@@ -1,3 +1,110 @@
-<app-navbar></app-navbar>
-<p>contact-page works!</p>
-<app-footer></app-footer>
+<div class="container-fluid w-100 vh-100">
+    <div class="container-fluid container-top w-100 h-auto shadow mt-0">
+        <div class="container w-100">
+            <div class="card shadow-none border-0 rounded-0 bg-transparent">
+  
+                <div class="card-title d-flex justify-content-between mt-3">
+                    <div class="menu d-flex w-100 align-items-center">              
+                        <button class="btn btn-sm btn-menu" type="button" 
+                            data-bs-toggle="offcanvas" 
+                            data-bs-target="#offcanvasWithBothOptions" 
+                            aria-controls="offcanvasWithBothOptions">
+                            <mat-icon>menu</mat-icon>              
+                        </button>
+                        <span class="pb-1 text-menu">Menú</span>
+                    </div>
+                    <div class="menu d-flex w-100 align-items-center justify-content-center">              
+                        <button class="btn btn-sm btn-menu"routerLink="/home">
+                            <mat-icon>directions_car</mat-icon>              
+                        </button>
+                        <span class="pb-1 text-menu">AutoAdvisor +</span>
+                    </div>
+                <div class="w-100"></div>
+            </div>
+  
+            <hr class="my-2 mb-3">
+  
+            <div class="container w-100 h-auto mt-2 mb-4">
+                <div class="row row-cols-1">
+                    <div class="col">
+                        <div class="card shadow-none border-0 bg-transparent">
+                            <div class="card-title">                  
+                                <span class="h3 title-description">
+                                    ¿Quiénes Somos?
+                                </span>
+                            </div>
+                            <div class="card-subtitle mt-3 mb-3">
+                                <span>
+                                    En nuestra empresa, nos enorgullece ofrecer una trayectoria sólida y una reputación inigualable en la industria automotriz, Con más de 15 años de experiencia, nos hemos posicionado como líderes en la venta de vehículos de alta gama y excelencia en el servicio al cliente. Nuestro compromiso con la calidad, la atención personalizada y la satisfacción del cliente nos distingue.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>      
+    </div>
+</div>
+<div class="container-fluid w-100 h-auto mt-5">
+    <div class="row row-cols-2 w-100 pt-2 m-0">
+        <div class="col ps-5 d-flex justify-content-center">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1628.5870984931237!2d-79.91227521910528!3d-2.17058749928552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d6ded40c9ae75%3A0xdd31a2b9a210fc94!2sUrdesa%20Central%2C%20Guayaquil%20090511!5e0!3m2!1ses!2sec!4v1674081143317!5m2!1ses!2sec" width="600" height="410" class="rounded-3 shadow" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="col p-0 d-flex align-items-center">
+            <div class="container-fluid w-auto">
+                <div class="container w-100 h-100">
+                    <div class="card shadow-none border-0 rounded-0 bg-transparent">
+                        <div class="container w-100 h-auto mt-2">
+                            <div class="row row-cols-1 mt-4">
+                                <div class="col pe-4">
+                                    <div class="card shadow-none border-0 bg-transparent">
+                                        <div class="card-title text-lg-end">                  
+                                            <span class="h3 title-description">
+                                                Contáctanos
+                                            </span>
+                                        </div>
+                                        <div class="row row-cols-2 text-end pt-2">
+                                            <div class="col">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><mat-icon>phone</mat-icon></td>
+                                                            <td>+593 98-726-5335</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><mat-icon>mail</mat-icon></td>
+                                                            <td>auto@advisor.plus</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><mat-icon>location_on</mat-icon></td>
+                                                            <td>Urdesa, Guayaquil. Ec</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><mat-icon>work_history</mat-icon></td>
+                                                            <td>Lunes - Viernes</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col pt-2 text-contact">
+                                                <span>
+                                                    Visítanos sin ningún compromiso en nuestro local físico y agenda una cita de forma directa. Trabajamos feriados hasta el mediodía y los sábados hasta las 15:00 p.m. ¡Te esperamos!
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>        
+                    </div>      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid w-100 h-auto pt-2">
+    <app-footer></app-footer>
+</div>
+
+<app-nav-menu></app-nav-menu>

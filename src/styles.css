@@ -13,7 +13,9 @@ body {
 }
 
 :root{
-    --White: #FFFFFF;
+    --White: #F9FAF4;
+    --Green: #2a4829;
+    
     --LightBlue: #543FFF;
     --MidnightBlue: #0F1219;
     --Gray: #555E69;

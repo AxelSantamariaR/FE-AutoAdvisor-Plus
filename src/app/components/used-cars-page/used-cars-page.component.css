@@ -1,24 +1,40 @@
 .container-fluid{
-    height: 90.5vh;    
+  background-color: var(--Green);
+  padding: 0;
 }
 
-.nav-tabs {
-    border-bottom: none;
+.container-top {
+  background-color: var(--White);
+  border-radius: 0 0 4rem 4rem;
 }
 
-.card{
-    background: url("../../../assets/img/others/usados-banner-menu.svg") no-repeat center;
-    background-size: cover;
+.btn-menu, .text-menu{
+  color: var(--Green);
 }
 
-.nav-link:hover{
-    border: 1px solid var(--LightBlue);
-    border-radius: 80px 20px;
+hr{
+  color: var(--Green);
 }
 
-.nav-link:focus{
-    border: 1px solid var(--LightBlue);
-    border-radius: 80px 20px;
-    color: var(--White);
-    background-color: var(--LightBlue); 
+.card-footer .footer-nota{
+  font-size: x-small;
+}
+
+a{
+  display: flex;
+  align-items: center;
+}
+
+a mat-icon{
+  margin-right: 1rem;
+}
+
+.active{
+  background-color: var(--Green);
+}
+  
+@media (max-width: 900px) {
+  .title-description{
+    font-size: x-large;
+  }
 }

@@ -1,0 +1,122 @@
+.container-fluid{
+    background-color: var(--White);
+    border-radius: 0 .5rem .5rem 0;
+    margin-left: 20%;
+    height: 30rem;
+    padding: 0;
+    box-shadow: -11px 11px 1px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline-success{
+    border-color: var(--White);
+    background: var(--Green);
+    color: var(--White);
+    letter-spacing: 2px;
+    font-size: large;
+    height: 3rem;
+}
+  
+.btn-outline-success:hover{
+    background: var(--Green);
+    color: var(--White);
+}
+
+.card-body{
+    padding: 2rem 0;
+}
+  
+.card-footer .title-footer{
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.card-footer .d-block{
+    font-size: small;
+    font-weight: 500;
+    width: 100%;
+    padding-left: 20%;
+}
+
+.img-fluid{
+    height: 29rem;
+    object-fit: cover;
+}
+
+.col mat-icon{
+    margin-right: .5rem;
+}
+
+.input-group .input-group-text, .form-control{
+    background: none;
+    border: 1px solid #d3caca;
+    font-size: .5rem;
+    padding-top: 1.2rem;
+    height: 3.1rem;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    background: white;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.btn-sm{
+    height: 2rem;
+}
+
+.btn mat-icon{
+    font-size: medium;
+    padding-top: .2rem;
+}
+
+.btn-actions{
+    padding: 0 .9rem;
+}
+
+input[type="text"]{
+    font-size: x-small;
+}
+
+@media (max-width: 900px) {
+
+    .container-fluid{
+        margin-left: 5%;
+    }
+
+    .title-description{
+        font-size: large;
+    }
+  
+    .card-subtitle span{
+        font-size: x-small;
+    }
+    
+    .card-body{
+        padding: 0;
+    }
+  
+    .card-body .btn-outline-success{
+        font-size: small;
+    }
+
+    .card-body mat-icon{
+        display: none;
+    }
+
+    .card-footer .title-footer{
+        font-size: medium;
+    }
+
+    .card-footer .d-block{
+        font-size: x-small;
+        width: 100%;
+        padding-left: 0;
+    }
+  
+    .img-fluid {
+        width: 100%;
+    }
+}
+  

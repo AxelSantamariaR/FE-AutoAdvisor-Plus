@@ -1,0 +1,12 @@
+a{
+    display: flex;
+    align-items: center;
+}
+
+a mat-icon{
+    margin-right: 1rem;
+}
+
+.active{
+    background-color: var(--Green);
+}

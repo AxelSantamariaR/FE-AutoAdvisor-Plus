@@ -1,0 +1,112 @@
+.sidenav-container {
+  height: 100%;
+  background-color: var(--White);
+}
+
+.sidenav {
+  width: 220px;
+  background: url("../../../../assets/img/banners/fondo-dashboard-leteral.svg") bottom no-repeat;
+  background-size: cover;
+  border: none;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--Green);
+  border-radius: 0 0 2rem 2rem;
+  width: 98.8%;
+  height: 5rem;
+}
+
+.toolbar-logo {
+  height: 10rem;
+}
+
+.toolbar-logo img {
+  width: 75%;
+  background-color: var(--green);
+}
+
+.container{
+  margin: 1.2rem 0;
+}
+
+.container span {
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.container mat-icon{
+  max-width: 4rem;
+  width: 100%;
+}
+
+.btn{
+  display: flex;
+  align-items: center;
+  padding: 0;
+  width: 100%;
+}
+
+.btn-success{
+  background-color: var(--Green);
+  color: var(--White);
+}
+
+.btn-success:active{
+  transform: scale(.99);
+}
+
+.btn-success:hover{
+  background-color: var(--White);
+  color: var(--Green);
+}
+
+.btn-success:hover mat-icon, .btn-success:focus mat-icon{
+  color: var(--Green);
+  transition: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.btn-success:focus{
+  background-color: var(--White);
+  color: var(--Green);
+}
+
+.btn-logout{
+  background: none;
+  border: none;
+  position: relative;
+  top: 3.5rem;
+  left: 1rem;
+  color: var(--White);
+}
+
+
+@media (max-width:957px) {
+  .title-nav {
+      color: var(--Green);
+  }
+
+  .mat-toolbar.mat-primary {
+    background: var(--Green);
+    width: 97.8%;
+  }
+
+  .mat-toolbar button mat-icon {
+      color: white;
+  }
+
+  .sidenav {
+    background-color: var(--White);
+  }
+
+  mat-toolbar span {
+      color: var(--Green);
+  }
+}

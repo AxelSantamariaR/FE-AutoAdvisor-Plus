@@ -1,0 +1,26 @@
+<span class="h5 text-uppercase">Confirmar eliminación</span> <hr class="opacity-50">
+<mat-dialog-content class="my-1">
+    <p>
+        ¿Estás seguro de que deseas eliminar a este asesor?
+    </p>
+    <p>
+        <strong>Nombre:</strong> 
+        {{ data.nombres }}
+    </p>
+    <p>
+        <strong>Domina: </strong> 
+        {{ data.idiomas }}
+    </p>    
+    <p>
+        <strong>Años experiencia:</strong> 
+        {{ data.aniosExperiencia }} Años
+    </p>
+</mat-dialog-content><hr class="opacity-50 my-1">
+<mat-dialog-actions align="end">
+    <button class="btn btn-danger me-2" mat-dialog-close>
+        Cancelar
+    </button>
+    <button class="btn btn-success" (click)="delete()">
+        Eliminar
+    </button>
+</mat-dialog-actions>

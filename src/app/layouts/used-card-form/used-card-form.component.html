@@ -1,0 +1,108 @@
+<div class="container-fluid w-auto mt-5">
+    <div class="container w-auto">
+        <div class="card shadow-none border-0 rounded-0 bg-transparent">
+            <div class="container mt-2">
+                <div class="row row-cols-2">
+                    <div class="col w-75 pe-4 mt-4">
+                        <div class="card shadow-none border-0 bg-transparent">
+                            <div class="card-title text-lg-start">                  
+                                <span class="h3 title-description">
+                                    Evaluamos y compramos tu auto usado 
+                                    <br>¡Descubre nuestra oferta!
+                                </span>
+                            </div>
+                            <div class="card-subtitle mt-1 text-lg-start">
+                                <span>
+                                    Pronta respuesta garantizada, estaremos en contacto contigo en breve.
+                                </span>
+                            </div>
+                            <div class="card-body px-0">                
+                                <form [formGroup]="form" (ngSubmit)="submit()">
+                                    <div class="row row-cols-2 mt-4">
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Nombre </mat-label>
+                                                <input type="text" matInput autocomplete="off" formControlName="nombre">
+                                                <mat-icon matPrefix>border_color</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Teléfono </mat-label>
+                                                <input type="tel" matInput autocomplete="tel" formControlName="telefono">
+                                                <mat-icon matPrefix>call</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Correo </mat-label>
+                                                <input type="email" matInput autocomplete="off" formControlName="correo">
+                                                <mat-icon matPrefix>alternate_email</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Auto </mat-label>
+                                                <input type="text" matInput autocomplete="off" formControlName="auto">
+                                                <mat-icon matPrefix>car_crash</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>          
+                                    
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Año </mat-label>
+                                                <input type="number" matInput autocomplete="off" formControlName="anio">
+                                                <mat-icon matPrefix>calendar_month</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Precio </mat-label>
+                                                <input type="number" matInput autocomplete="off" formControlName="precio">
+                                                <mat-icon matPrefix>monetization_on</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Descripcion </mat-label>
+                                                <input type="text" matInput autocomplete="off" formControlName="descripcion">
+                                                <mat-icon matPrefix>description</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group mt-1">
+                                                <label class="input-group-text p-1" for="inputGroupFile01">
+                                                    <mat-icon class="icon-file" matPrefix>upload_file</mat-icon>
+                                                </label>
+                                                <input type="file" class="form-control" id="inputGroupFile01" (change)="onFileSelected($event)" formControlName="imagen">
+                                            </div>   
+                                        </div>
+                                    </div>                
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-success btn-sm btn-send w-100" type="submit" >
+                                                <mat-icon>send</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>         
+                                </form>
+                            </div>   
+                        </div>
+                    </div>
+                    <div class="col w-25 p-0 rounded-2">
+                        <img src="https://e1.pxfuel.com/desktop-wallpaper/980/789/desktop-wallpaper-1080x1920-cars-sports-cars-off-road-sports-car-1000x1777-for-your-mobile-tablet-vertical-car.jpg" class="img-fluid rounded-2" alt="...">
+                      </div>
+                      
+                </div>
+            </div>        
+        </div>      
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<span class="h5 text-uppercase">Confirmar eliminación</span> <hr class="opacity-50">
+<mat-dialog-content  *ngIf="bandera === 'actualizar'" class="pb-0">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="mt-2">    
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label> Hora </mat-label>
+                <mat-select formControlName="hora">
+                    <mat-option [value]="'09:00'"> 09:00 A.M </mat-option>
+                    <mat-option [value]="'10:00'"> 10:00 A.M </mat-option>
+                    <mat-option [value]="'11:00'"> 11:00 A.M </mat-option>
+                    <mat-option [value]="'13:00'"> 13:00 P.M </mat-option>
+                    <mat-option [value]="'14:00'"> 14:00 P.M </mat-option>
+                    <mat-option [value]="'15:00'"> 15:00 P.M </mat-option>
+                    <mat-option [value]="'16:00'"> 16:00 P.M </mat-option>
+                </mat-select>
+                <mat-icon matPrefix>supervised_user_circle</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label> Fecha </mat-label>
+                <input type="date" matInput autocomplete="off" formControlName="fecha">
+                <mat-icon matPrefix>calendar_month</mat-icon>
+            </mat-form-field>
+        </div>
+        <hr class="opacity-50 my-1">
+        <mat-dialog-actions align="end">
+            <button class="btn btn-danger me-2" mat-dialog-close> Cancelar </button>
+            <button class="btn btn-success" type="submit"> Actualizar </button>
+        </mat-dialog-actions> 
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="bandera === 'eliminar'">
+    <p class="mt-2"> ¿Estás seguro de que deseas eliminar esta cita? </p>
+    <p> <strong>Nombre:</strong> {{ cita.nombre }} </p>
+    <p> <strong>Fecha:</strong> {{ cita.fecha | date:"Y-M-d" }} </p>
+    <p class="mb-4"> <strong>Hora:</strong> {{ cita.hora }} </p>
+    <hr class="opacity-50">
+    <mat-dialog-actions align="end">
+        <button class="btn btn-danger me-2" mat-dialog-close> Cancelar </button>
+        <button class="btn btn-success" (click)="deleteCita()"> Eliminar </button>
+    </mat-dialog-actions>
+</mat-dialog-content>
+

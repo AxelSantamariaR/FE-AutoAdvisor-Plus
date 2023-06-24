@@ -1,0 +1,60 @@
+<div class="container-fluid w-100 h-100 m-0">
+    <div class="card shadow-none border-0">
+        <div class="card-head">
+            <div class="card-title">
+                <span class="h5 text-uppercase">
+                    <mat-icon class="pt-1">mail</mat-icon>
+                    Enviar Correo
+                </span>
+                <hr class="w-100 opacity-100 m-0 mt-2 mb-4 p-0">
+            </div>
+        </div>
+        <form [formGroup]="form" (submit)="sumbit()">
+            <div class="card-body p-0">
+                <div class="card-title">
+                    <div class="row row-cols-2 mb-2">
+                        <div class="col-3">
+                            <strong>Para:</strong>
+                        </div>
+                        <div class="col">
+                            <span>{{asesor.correo}}</span>
+                        </div>
+                    </div>
+                    <div class="row row-cols-2">
+                        <div class="col-3 pt-4">
+                            <strong>De:</strong>
+                        </div>
+                        <div class="col w-75">
+                            <mat-form-field appearance="legacy">
+                                <input type="text" matInput formControlName="correo">
+                            </mat-form-field>
+                        </div>
+                    </div>         
+                    <div class="row row-cols-2">
+                        <div class="col-3 pt-4">
+                            <strong>Asunto:</strong>
+                        </div>
+                        <div class="col w-75">
+                            <mat-form-field appearance="legacy">
+                                <input type="text" matInput formControlName="asunto">
+                            </mat-form-field>
+                        </div>
+                    </div>                       
+                    <div class="row row-cols-1 mt-4">
+                        <div class="col">
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="3" placeholder="....." formControlName="descripcion"></textarea >
+                            </div>
+                        </div>
+                    </div>              
+                </div>
+            </div>
+            <div class="card-footer m-0 p-0 bg-transparent border-0">
+                <div class="d-flex w-100 align-items-center justify-content-end mt-2 mb-0 pb-0">              
+                    <button type="submit" class="btn btn-signin rounded-3 w-50">Enviar</button>
+                </div>   
+            </div>            
+        </form>
+    </div>
+</div>
+  

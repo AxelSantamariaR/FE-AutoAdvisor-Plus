@@ -1,0 +1,26 @@
+<span class="h5 text-uppercase">Confirmar eliminación</span> <hr class="opacity-50">
+<mat-dialog-content class="my-1">
+    <p>
+        ¿Estás seguro de que deseas eliminar el auto?
+    </p>
+    <p>
+        <strong>Nombre:</strong> 
+        {{ data.nombre }}
+    </p>
+    <p>
+        <strong>Marca:</strong> 
+        {{ data.marca }}
+    </p>
+    <p>
+        <strong>Año:</strong> 
+        {{ data.anio }}
+    </p>
+</mat-dialog-content><hr class="opacity-50 my-1">
+<mat-dialog-actions align="end">
+    <button class="btn btn-danger me-2" mat-dialog-close>
+        Cancelar
+    </button>
+    <button class="btn btn-success" (click)="delete()">
+        Eliminar
+    </button>
+</mat-dialog-actions>

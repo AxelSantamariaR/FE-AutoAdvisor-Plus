@@ -1,0 +1,100 @@
+<div class="container-fluid w-100 vh-100">
+    <div class="container-fluid container-top w-100 h-auto shadow mt-0">
+        <div class="container w-100">
+            <div class="card shadow-none border-0 rounded-0 bg-transparent">
+  
+                <div class="card-title d-flex justify-content-between mt-3">
+                    <div class="menu d-flex w-100 align-items-center">              
+                        <button class="btn btn-sm btn-menu" type="button" 
+                            data-bs-toggle="offcanvas" 
+                            data-bs-target="#offcanvasWithBothOptions" 
+                            aria-controls="offcanvasWithBothOptions">
+                            <mat-icon>menu</mat-icon>              
+                        </button>
+                        <span class="pb-1 text-menu">Menú</span>
+                    </div>
+                    <div class="menu d-flex w-100 align-items-center justify-content-center">              
+                        <button class="btn btn-sm btn-menu"routerLink="/home">
+                            <mat-icon>directions_car</mat-icon>              
+                        </button>
+                        <span class="pb-1 text-menu">AutoAdvisor +</span>
+                    </div>
+                <div class="w-100"></div>
+            </div>
+  
+            <hr class="my-2 mb-3">
+  
+            <div class="container w-100 h-auto mt-2 mb-4">
+                <div class="row row-cols-1">
+                    <div class="col">
+                        <div class="card shadow-none border-0 bg-transparent">
+                            <div class="card-title">                  
+                                <span class="h1 title-description">
+                                    Encuentra tu vehículo ideal
+                                </span>
+                            </div>
+                            <div class="card-subtitle mt-2">
+                                <span>
+                                    Explora nuestra amplia gama de vehículos de lujo y encuentra el automóvil de tus sueños. Nuestro equipo especializado está disponible para brindarte asesoramiento personalizado y ayudarte a concertar una cita para conocer de cerca los autos que te interesan.
+                                </span>
+                            </div>     
+                            <div class="card-footer shadow-none border-0 bg-transparent px-0">
+                                <div class="row mt-4 mb-2">
+                                    <div class="col">
+                                        <span class="footer-nota">
+                                            ¡Confía en nuestro equipo de expertos para una experiencia automotriz excepcional!
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+             
+        </div>      
+    </div>
+</div>
+<div class="container-fluid w-100 h-auto py-3 mt-5">
+    <div class="container-horizontal">
+        <div class="container ms-2" *ngFor="let items of autos">
+            <div class="card">
+                <div class="card-head">
+                    <img src="../../../assets/img/cars/{{items.imagen}}.png" alt="Shoe" class="product-img">
+                    <div class="product-detail px-3">
+                        <p class="mt-4 mb-1 h4 text-capitalize">{{items.nombre}}</p> 
+                        {{items.descripcion}}
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="product-desc">
+                        <span class="product-title pt-4 ps-3 d-block pb-2 text-uppercase">
+                            {{items.marca}} <br>
+                            <b>{{items.tipo}}</b>
+                            <span class="badge px-2 py-1 position-relative ms-2">{{items.anio}}</span>
+                        </span>
+                        <span class="product-caption d-block py-1 ps-3 text-uppercase"> {{items.edicion}} </span>                                                  
+                    </div>
+                    
+                    <div class="product-properties">
+                        <span class="product-color">
+                            <button class="btn btn-outline-success ms-3 mt-3" [routerLink]="['/autos',items.id]">
+                                Me Interesa
+                            </button>
+                        </span>
+                        <span class="product-price">
+                            USD<b>{{items.precio}}</b>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </div>
+</div>
+
+<div class="container-fluid w-100 h-auto pt-5">
+    <app-footer></app-footer>
+</div>
+
+<app-nav-menu></app-nav-menu>

@@ -1,45 +1,96 @@
-<app-navbar></app-navbar>
-<div class="portada">
-    <img class="img1" [src]="imagenPortada" alt="portada-imagen">
-</div>
-<div fxLayout="row">
-    <div fxFlex="50">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Bienvenidos</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Somos un concesionario automotriz especializado en la venta de vehículos seminuevos de las marcas más prestigiosas. Nuestro enfoque se centra en brindar a nuestros clientes una experiencia personalizada respaldada por un equipo altamente capacitado. Nos esforzamos por generar la máxima confianza y seguridad en cada proceso de negociación. Valoramos la integridad, la responsabilidad, el respeto y la honestidad en todas nuestras interacciones.</p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    <div fxFlex="50">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Filosofía</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>En AutoAdvisor Plus, , nuestros clientes son nuestra principal prioridad y orientamos todas nuestras acciones y resultados hacia su beneficio. Nos regimos por valores fundamentales e inquebrantables, tales como la integridad, la responsabilidad, el respeto, la honestidad, el compromiso y la orientación al servicio. Estos valores son pilares fundamentales en nuestra empresa y guían cada una de nuestras interacciones con nuestros clientes.</p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
-  <br>
-  <div fxLayout="row" fxLayoutAlign="center">
-    <mat-card class="container">
-      <div class="content">
-        <div class="text">
-          <h2><b>Cita Asesores</b></h2>
-          <p>Nuestro equipo de asesores altamente capacitados está listo para brindarte la mejor asesoría en la compra de tu próximo vehículo. Con un enfoque personalizado y amplio conocimiento del mercado automotriz, te garantizamos una experiencia confiable y segura. Estamos aquí para ayudarte a tomar la mejor decisión.</p>
-          <button class="boton-asesores"mat-raised-button>Cita Asesores</button>
-        </div>
-        <div class="image">
-          <img [src] = "imagenAsesores" alt="Descripción de la imagen">
-        </div>
-      </div>
-    </mat-card>
-  </div>
-  <br>
+<div class="container-fluid w-100 vh-100">
+  <div class="container-fluid container-top w-100 h-75 shadow my-3 mt-0">
+    <div class="container w-100 h-100">
+      <div class="card shadow-none border-0 rounded-0 bg-transparent">
 
-  <br><br><br>
-<app-footer></app-footer>
+        <div class="card-title d-flex justify-content-between mt-3">
+          <div class="menu d-flex w-100 align-items-center">              
+            <button class="btn btn-sm btn-menu" type="button" 
+            data-bs-toggle="offcanvas" 
+            data-bs-target="#offcanvasWithBothOptions" 
+            aria-controls="offcanvasWithBothOptions">
+              <mat-icon>menu</mat-icon>              
+            </button>
+            <span class="pb-1 text-menu">Menú</span>
+          </div>
+          <div class="menu d-flex w-100 align-items-center justify-content-center">              
+            <button class="btn btn-sm btn-menu" routerLink="/home">
+              <mat-icon>directions_car</mat-icon>              
+            </button>
+            <span class="pb-1 text-menu">AutoAdvisor +</span>
+          </div>
+          <div class="menu d-flex w-100 align-items-center justify-content-end">              
+            <button type="button" class="btn btn-signin rounded-3" routerLink="/login">sign in</button>
+          </div>
+        </div>
+
+        <hr class="my-2 mb-3">
+
+        <div class="container w-100 h-auto mt-2">
+          <div class="row row-cols-2">
+            <div class="col">
+              <div class="card shadow-none border-0 bg-transparent">
+                <div class="card-title">                  
+                  <span class="h1 title-description">
+                    Vehículos, asesores, excelencia garantizada
+                  </span>
+                </div>
+                <div class="card-subtitle mt-1">
+                  <span>
+                    Tu portal completo para vehículos: compra, venta y asesoramiento especializado.
+                  </span>
+                </div>
+                <div class="card-body d-flex px-0 my-3">                
+                  <button type="button" class="btn btn-signin rounded-3" routerLink="/usados">
+                    Vender
+                  </button>
+                  <button type="button" class="btn btn-outline-success rounded-3 d-flex mx-2 align-items-center" routerLink="/catalogo">
+                    ver catalogo
+                    <mat-icon class="mx-2">visibility</mat-icon>
+                  </button>
+                </div>       
+                <div class="card-footer shadow-none border-0 bg-transparent px-0">
+                  <div class="row">
+                    <div class="col-3">
+                      <span class="fw-bolder">100+</span>
+                      <span class="d-block">Vehículos</span>
+                    </div>
+                    <div class="col">
+                      <span class="fw-bolder">20+</span>
+                      <span class="d-block">Asesores</span>
+                    </div>
+                  </div>
+                </div>   
+              </div>
+            </div>
+            <div class="col d-flex align-content-start justify-content-center">
+              <img src="../../../assets/img/home/auto-miniature-home.svg" class="img-fluid" alt="...">
+            </div>
+          </div>
+        </div>        
+      </div>      
+    </div>
+  </div>
+
+  <div class="container-fluid w-100 h-auto py-3">
+    <app-card-car></app-card-car>
+  </div>
+
+  <div class="container-fluid w-100 h-auto py-3">
+    <app-used-cards></app-used-cards>
+  </div>
+
+  <div class="container-fluid w-100 h-auto py-3">
+    <app-mision-vision></app-mision-vision>
+  </div>
+
+  <div class="container-fluid w-100 h-auto py-3">
+    <app-card-asesores></app-card-asesores>
+  </div>
+  
+  <div class="container-fluid w-100 h-auto pt-5">
+    <app-footer></app-footer>
+  </div>
+</div>
+
+<app-nav-menu></app-nav-menu>

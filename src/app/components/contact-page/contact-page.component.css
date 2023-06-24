@@ -1,0 +1,41 @@
+.container-fluid{
+  background-color: var(--Green);
+  padding: 0;
+}
+
+.container-top {
+  background-color: var(--White);
+  border-radius: 0 0 4rem 4rem;
+}
+
+.btn-menu, .text-menu{
+  color: var(--Green);
+}
+
+hr{
+  color: var(--Green);
+}
+
+td{
+  font-size: small;
+}
+
+.col .container-fluid{
+  background-color: var(--White);
+  border-radius: 4rem 0 0 4rem;
+  margin-left: 15%;
+  height: 20rem;
+  box-shadow: -11px 11px 1px rgba(0, 0, 0, 0.3);
+}
+
+.text-contact{
+  text-align: justify;
+  font-size: small;
+  padding-left: 3rem;
+}
+
+@media (max-width: 900px) {
+  .title-description{
+    font-size: x-large;
+  }
+}

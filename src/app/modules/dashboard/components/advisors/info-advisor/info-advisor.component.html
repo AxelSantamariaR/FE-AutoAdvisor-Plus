@@ -1,0 +1,36 @@
+<mat-card class="example-card p-0 border-0 shadow-none">
+    <mat-card-header>
+        <mat-card-title>{{data.nombres}}</mat-card-title>
+        <mat-card-subtitle>{{data.aniosExperiencia}} años de experiencia en {{data.especialidad}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="../../../../../../assets/img/advisors/{{data.imagen}}.jpg" class="rounded-2 shadow-sm" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <p>{{data.descripcion}}</p>
+    </mat-card-content>
+    <mat-card-actions class="ms-1">
+        <div class="row row-cols-2">
+            <div class="col-3">
+                <p>Contactos: </p>
+            </div>
+            <div class="col w-75">
+                <mat-card-subtitle>{{data.telefono}}  |  {{data.correo}}</mat-card-subtitle>
+            </div>
+        </div>
+        <div class="row row-cols-2">
+            <div class="col-3">
+                <p>Nació: </p>
+            </div>
+            <div class="col w-75">
+                <mat-card-subtitle>{{data.fechaNac |date:"Y-M-d" }} </mat-card-subtitle>
+            </div>
+        </div>
+        <div class="row row-cols-2">
+            <div class="col-3">
+                <p>Idiomas: </p>
+            </div>
+            <div class="col w-75">
+                <mat-card-subtitle>{{data.idiomas}}</mat-card-subtitle>
+            </div>
+        </div>        
+    </mat-card-actions>
+</mat-card>

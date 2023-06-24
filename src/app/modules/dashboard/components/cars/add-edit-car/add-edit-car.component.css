@@ -1,0 +1,54 @@
+.col-imagen{
+    background: url("https://w0.peakpx.com/wallpaper/581/477/HD-wallpaper-vertical-car-vertical-cars.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.title{
+    font-weight: 500;
+}
+
+.container-sm{
+    padding: 0 1rem;
+    height: auto;
+}
+
+span {
+    color: var(--Green);
+    letter-spacing: .1rem;
+}
+
+.col mat-icon{
+    margin-right: .5rem;
+}
+.input-group .input-group-text, .form-control{
+    background: none;
+    border: 1px solid #d3caca;
+    font-size: .5rem;
+    padding-top: 1.2rem;
+    height: 3.1rem;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    background: white;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.btn-sm{
+    height: 2rem;
+}
+
+.btn mat-icon{
+    font-size: medium;
+    padding-top: .2rem;
+}
+
+.btn-actions{
+    padding: 0 .9rem;
+}
+
+input[type="text"]{
+    font-size: x-small;
+}

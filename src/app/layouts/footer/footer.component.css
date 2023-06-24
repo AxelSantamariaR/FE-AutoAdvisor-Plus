@@ -1,7 +1,7 @@
 footer{
-    background: url("../../../assets/img/others/footer.svg") no-repeat;
-    background-size: cover;
-    color: var(--White);
+    background: var(--White);
+    color: var(--Green);
+    border-radius: 4rem 4rem 0 0;
 }
 
 p{
@@ -9,16 +9,13 @@ p{
 }
 
 span{
-    color: var(--MidnightBlue);
+    color: var(--Green);
     font-size: x-small;
 }
 
-a{
-    color: #5e5858;
-    text-decoration: none;
-}
-
-a:hover{
-    color: var(--MidnightBlue);    
-    text-decoration: underline;
+hr{
+    background-color: var(--Green);
+    opacity: 1;
+    border: none;
+    height: .2rem;
 }

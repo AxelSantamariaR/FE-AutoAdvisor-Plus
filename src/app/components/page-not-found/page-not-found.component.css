@@ -1,0 +1,32 @@
+.container-fluid{
+    background-color: var(--White);
+}
+
+.row{
+    height: 50%;
+    width: 100%;
+    margin: 0;
+}
+
+.row-text{
+    background-color: var(--Green);
+    color: var(--White);
+    font-size: 1.7rem;
+}
+
+.text-title{
+    font-size: 15rem;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 4.8rem;
+    color: var(--Green);
+}
+
+.btn{
+    background-color: var(--White);
+}
+
+.btn:hover{
+    background-color: white;
+    color: black;
+}

@@ -1,0 +1,174 @@
+<div class="container-fluid h-100 w-100 py-5">
+    <div class="row h-100">
+        <div class="col-md-2">
+            <div class="description">
+                <span class="h2">Request now</span>
+                <p class="mt-2">
+                Elige el auto de tu agrado y solicita una reunion con nuestros asesores.
+                </p>
+            </div>
+            <div class="input-search d-flex align-items-center">
+                <input type="text" id="inputSearch" class="w-100" placeholder="Buscar..." (input)="search($event)">
+                <div class="input-search-icon d-flex justify-content-center align-items-center">
+                    <mat-icon>search</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <mat-tab-group (selectedTabChange)="onTabSelected($event)">
+                <mat-tab label="All"> 
+                    <div class="container-horizontal">
+                        <div class="container ms-2" *ngFor="let items of autos">
+                            <div class="card">
+                                <div class="card-head">
+                                    <img src="../../../assets/img/cars/{{items.imagen}}.png" alt="Shoe" class="product-img">
+                                    <div class="product-detail px-3">
+                                        <p class="mt-4 mb-1 h4 text-capitalize">{{items.nombre}}</p> 
+                                        {{items.descripcion}}
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="product-desc">
+                                        <span class="product-title pt-4 ps-3 d-block pb-2 text-uppercase">
+                                            {{items.marca}} <br>
+                                            <b>{{items.tipo}}</b>
+                                            <span class="badge px-2 py-1 position-relative ms-2">{{items.anio}}</span>
+                                        </span>
+                                        <span class="product-caption d-block py-1 ps-3 text-uppercase"> {{items.edicion}} </span>                                                  
+                                    </div>
+                                    
+                                    <div class="product-properties">
+                                        <span class="product-color">
+                                            <button class="btn btn-outline-success ms-3 mt-3" [routerLink]="['/autos',items.id]">
+                                                Me Interesa
+                                            </button>
+                                        </span>
+                                        <span class="product-price">
+                                            USD<b>{{items.precio}}</b>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>            
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="2023"> 
+                    <div class="container-horizontal">
+                        <div class="container ms-2" *ngFor="let items of autos">
+                            <div class="card">
+                                <div class="card-head">
+                                    <img src="../../../assets/img/cars/{{items.imagen}}.png" alt="Shoe" class="product-img">
+                                    <div class="product-detail px-3">
+                                        <p class="mt-4 mb-1 h4 text-capitalize">{{items.nombre}}</p> 
+                                        {{items.descripcion}}
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="product-desc">
+                                        <span class="product-title pt-4 ps-3 d-block pb-2 text-uppercase">
+                                            {{items.marca}} <br>
+                                            <b>{{items.tipo}}</b>
+                                            <span class="badge px-2 py-1 position-relative ms-2">{{items.anio}}</span>
+                                        </span>
+                                        <span class="product-caption d-block py-1 ps-3 text-uppercase"> {{items.edicion}} </span>                                                  
+                                    </div>
+                                    
+                                    <div class="product-properties">
+                                        <span class="product-color">
+                                            <button class="btn btn-outline-success ms-3 mt-3" [routerLink]="['/autos',items.id]">
+                                                Consultar
+                                            </button>
+                                        </span>
+                                        <span class="product-price">
+                                            USD<b>{{items.precio}}</b>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>            
+                    </div>                    
+                </mat-tab>
+
+                <mat-tab label="2022">
+                    <div class="container-horizontal">
+                        <div class="container ms-2" *ngFor="let items of autos">
+                            <div class="card">
+                                <div class="card-head">
+                                    <img src="../../../assets/img/cars/{{items.imagen}}.png" alt="Shoe" class="product-img">
+                                    <div class="product-detail px-3">
+                                        <p class="mt-4 mb-1 h4 text-capitalize">{{items.nombre}}</p> 
+                                        {{items.descripcion}}
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="product-desc">
+                                        <span class="product-title pt-4 ps-3 d-block pb-2 text-uppercase">
+                                            {{items.marca}} <br>
+                                            <b>{{items.tipo}}</b>
+                                            <span class="badge px-2 py-1 position-relative ms-2">{{items.anio}}</span>
+                                        </span>
+                                        <span class="product-caption d-block py-1 ps-3 text-uppercase"> {{items.edicion}} </span>                                                  
+                                    </div>
+                                    
+                                    <div class="product-properties">
+                                        <span class="product-color">
+                                            <button class="btn btn-outline-success ms-3 mt-3" [routerLink]="['/autos',items.id]">
+                                                Consultar
+                                            </button>
+                                        </span>
+                                        <span class="product-price">
+                                            USD<b>{{items.precio}}</b>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>            
+                    </div>                    
+                </mat-tab>
+                
+                <mat-tab label="Más">
+                    <div class="container-horizontal">
+                        <div class="container ms-2" *ngFor="let items of autos">
+                            <div class="card">
+                                <div class="card-head">
+                                    <img src="../../../assets/img/cars/{{items.imagen}}.png" alt="Shoe" class="product-img">
+                                    <div class="product-detail px-3">
+                                        <p class="mt-4 mb-1 h4 text-capitalize">{{items.nombre}}</p> 
+                                        {{items.descripcion}}
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="product-desc">
+                                        <span class="product-title pt-4 ps-3 d-block pb-2 text-uppercase">
+                                            {{items.marca}} <br>
+                                            <b>{{items.tipo}}</b>
+                                            <span class="badge px-2 py-1 position-relative ms-2">{{items.anio}}</span>
+                                        </span>
+                                        <span class="product-caption d-block py-1 ps-3 text-uppercase"> {{items.edicion}} </span>                                                  
+                                    </div>
+                                    
+                                    <div class="product-properties">
+                                        <span class="product-color">
+                                            <button class="btn btn-outline-success ms-3 mt-3" [routerLink]="['/autos',items.id]">
+                                                Consultar
+                                            </button>
+                                        </span>
+                                        <span class="product-price">
+                                            USD<b>{{items.precio}}</b>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>            
+                    </div>         
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
+  

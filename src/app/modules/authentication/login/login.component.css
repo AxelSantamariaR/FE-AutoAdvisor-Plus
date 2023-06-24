@@ -1,0 +1,22 @@
+.img-thumbnail{
+    width: 15%;
+    border: none;
+}
+
+.form-login{
+    background: var(--White);
+}
+
+.text-title{
+    color: var(--Green);
+}
+
+.container{
+    font-size: x-small;
+    color: var(--Green);
+    font-weight: 500;
+}
+
+.container mat-icon{
+    color: var(--Green);
+}

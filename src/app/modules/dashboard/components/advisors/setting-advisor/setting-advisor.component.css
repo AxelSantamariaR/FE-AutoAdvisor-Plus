@@ -1,0 +1,41 @@
+.container-fluid {
+    height: 80vh;
+}
+
+.title{
+    text-transform: uppercase;
+    font-size: x-large;
+    color: var(--Green);
+    letter-spacing: .1rem;
+}
+
+.btn-add{
+    height: auto;
+    margin-top: .5rem;
+    padding-bottom: 0;
+}
+
+.btn-add mat-icon{
+    height: 1.5rem;
+    margin-top: .1rem;
+}
+
+.btn-accion{
+    font-size: x-small;
+    height: 2rem;
+    margin: 0 .2rem;
+    width: 30%;
+}
+
+.btn-accion mat-icon{
+    font-size: 1rem;
+}
+
+table {
+    width: 100%;
+}
+  
+td, th {
+    width: 25%;
+    font-size: .8rem;
+}

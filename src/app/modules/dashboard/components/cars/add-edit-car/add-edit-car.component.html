@@ -1,0 +1,95 @@
+<div class="row row-cols-2">
+    <div class="col-3 col-imagen"></div>
+        <div class="col w-75">
+            <div class="">
+                <div class="card-title w-100">
+                    <span class="h2 ms-3 text-uppercase">{{title}}</span>
+                </div>
+            <div class="container-sm w-100">       
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                    <div class="row row-cols-2 mt-4">
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Nombre </mat-label>
+                                <input type="text" matInput autocomplete="off" formControlName="nombre">
+                                <mat-icon matPrefix>border_color</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Marca </mat-label>
+                                <input type="text" matInput autocomplete="off" formControlName="marca">
+                                <mat-icon matPrefix>no_crash</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Tipo </mat-label>
+                                <input type="text" matInput autocomplete="off" formControlName="tipo">
+                                <mat-icon matPrefix>rule</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Año </mat-label>
+                                <input type="number" matInput autocomplete="off" formControlName="anio">
+                                <mat-icon matPrefix>calendar_month</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>          
+                    
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Edición </mat-label>
+                                <input type="text" matInput autocomplete="off" formControlName="edicion">
+                                <mat-icon matPrefix>auto_awesome</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Precio </mat-label>
+                                <input type="number" matInput autocomplete="off" formControlName="precio">
+                                <mat-icon matPrefix>monetization_on</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Descripcion </mat-label>
+                                <input type="text" matInput autocomplete="off" formControlName="descripcion">
+                                <mat-icon matPrefix>description</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mt-1">
+                                <label class="input-group-text p-1" for="inputGroupFile01">
+                                    <mat-icon class="icon-file" matPrefix>upload_file</mat-icon>
+                                </label>
+                                <input type="file" class="form-control" id="inputGroupFile01" (change)="onFileSelected($event)" formControlName="imagen">
+                            </div>   
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <button class="btn btn-danger btn-sm w-100" mat-dialog-close >
+                                <mat-icon> cancel </mat-icon>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-success btn-sm btn-send w-100" type="submit" >
+                                <mat-icon>{{iconName}}</mat-icon>
+                            </button>
+                        </div>
+                    </div>         
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

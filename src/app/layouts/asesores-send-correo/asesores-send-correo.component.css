@@ -1,0 +1,20 @@
+
+.container-fluid{
+    padding: 0;
+    font-size: smaller;
+}
+
+strong{
+    font-weight: 600;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+
+.btn-signin{
+    background: var(--Green);
+    color: var(--White);
+    font-size: small;
+}

@@ -1,0 +1,36 @@
+.container-fluid{
+  background-color: var(--Green);
+  padding: 0;
+}
+
+.container-top {
+  background-color: var(--White);
+  border-radius: 0 0 4rem 4rem;
+}
+
+.btn-menu, .text-menu{
+  color: var(--Green);
+}
+
+hr{
+  color: var(--Green);
+}
+
+.card-footer .footer-nota{
+  font-size: x-small;
+}
+
+
+.img-fluid {
+  width: 70%;
+}
+
+.card-footer .fw{
+  font-weight: 600;
+}
+  
+@media (max-width: 900px) {
+  .title-description{
+    font-size: x-large;
+  }
+}

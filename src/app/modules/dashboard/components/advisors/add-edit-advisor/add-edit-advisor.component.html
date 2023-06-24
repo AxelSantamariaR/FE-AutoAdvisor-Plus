@@ -1,0 +1,104 @@
+<div class="row row-cols-2">
+    <div class="col-3 col-imagen"></div>
+        <div class="col w-75">
+            <div class="">
+                <div class="card-title w-100">
+                    <span class="h2 ms-3 text-uppercase">{{title}}</span>
+                </div>
+            <div class="container-sm w-100">       
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                    <div class="row row-cols-2 mt-4">
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Nombres </mat-label>
+                                <input type="text" matInput autocomplete="off" formControlName="nombres">
+                                <mat-icon matPrefix>border_color</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Años Experiencia </mat-label>
+                                <input type="number" matInput autocomplete="off" formControlName="aniosExperiencia">
+                                <mat-icon matPrefix>psychology</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Especialidad </mat-label>
+                                <input type="text" matInput autocomplete="off" formControlName="especialidad">
+                                <mat-icon matPrefix>bolt</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Idiomas </mat-label>
+                                <input type="text" matInput autocomplete="off" formControlName="idiomas">
+                                <mat-icon matPrefix>language</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>          
+                    
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> FechaNac </mat-label>
+                                <input type="date" matInput autocomplete="off" formControlName="fechaNac">
+                                <mat-icon matPrefix>calendar_month</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Correo </mat-label>
+                                <input type="text" matInput autocomplete="off" formControlName="correo">
+                                <mat-icon matPrefix>mail</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label> Descripcion </mat-label>
+                                <textarea cols="30" matInput rows="8" formControlName="descripcion"></textarea>
+                                <mat-icon matPrefix>description</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <mat-form-field appearance="outline">
+                                    <mat-label> Teléfono </mat-label>
+                                    <input type="text" matInput autocomplete="off" formControlName="telefono">
+                                    <mat-icon matPrefix>phone_iphone</mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <div class="input-group mt-1">
+                                    <label class="input-group-text p-1" for="inputGroupFile01">
+                                        <mat-icon class="icon-file" matPrefix>upload_file</mat-icon>
+                                    </label>
+                                    <input type="file" class="form-control" id="inputGroupFile01" (change)="onFileSelected($event)" formControlName="imagen">
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <button class="btn btn-danger btn-sm w-100" mat-dialog-close >
+                                <mat-icon> cancel </mat-icon>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-success btn-sm btn-send w-100" type="submit" >
+                                <mat-icon>{{iconName}}</mat-icon>
+                            </button>
+                        </div>
+                    </div>         
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

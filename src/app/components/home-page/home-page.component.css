@@ -1,60 +1,75 @@
-.portada {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .img1 {
-    height: 400px;
-    width: 1400px;
-  }
-  .container {
-    width: 500px;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: #f2f2f2;
-  }
-  
-  .content {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-  
-  .text {
-    text-align: left;
-  }
-  
-  .text h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .text p {
-    margin-bottom: 10px;
-  }
-  
-  .image {
-    text-align: right;
-  }
-  
-  .image img {
-    width: 200px;
-    border-radius: 5px;
-  }
-  .container {
-    width: 800px;
-  }
-  .container img {
-    margin-top: 20px;
-    /* Resto de estilos... */
-  }
-  .container {
-    background-color: #1a237e;
-    box-shadow: 0 0 10px rgba(26, 35, 126, 0.5); 
-    color: white;
+.container-fluid{
+  background-color: var(--Green);
+  padding: 0;
+}
+ 
+.container-top {
+  background-color: var(--White);
+  border-radius: 0 0 4rem 4rem;
 }
 
-.boton-asesores {
-    border-radius: 8px;
-    font-size: 16px;
+.btn-menu, .text-menu{
+  color: var(--Green);
+}
+
+.btn-signin{
+  background: var(--Green);
+  color: var(--White);
+  font-size: small;
+}
+
+hr{
+  color: var(--Green);
+}
+
+.btn-outline-success{
+  border-color: var(--White);
+  color: var(--Green);
+}
+
+.btn-outline-success:hover{
+  background: var(--Green);
+  color: var(--White);
+}
+
+.card-footer .fw-bolder{
+   font-size: 23px;
+}
+
+.img-fluid {
+  width: 70%;
+}
+
+@media (max-width: 900px) {
+  .title-description{
+    font-size: x-large;
   }
+
+  .card-subtitle span{
+    font-size: x-small;
+  }
+
+  .card-body .btn-signin{
+    height: 2rem;
+  }
+
+  .card-body .btn-outline-success{
+    font-size: small;
+  }
+
+  .card-body mat-icon{
+    display: none;
+  }
+
+  .card-footer .fw-bolder{
+    font-size: small;
+  }
+
+  .card-footer .col-3 {
+    flex-basis: 50%;
+  }
+
+  .img-fluid {
+    width: 100%;
+  }
+}

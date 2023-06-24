@@ -7,25 +7,34 @@ import { AdvisorsPageComponent } from './components/advisors-page/advisors-page.
 import { UsedCarsPageComponent } from './components/used-cars-page/used-cars-page.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { LoginComponent } from './modules/authentication/login/login.component';
-import { UsadosHomePageComponent } from './layouts/usados-home-page/usados-home-page.component';
-import { UsadosSeguimientoPageComponent } from './layouts/usados-seguimiento-page/usados-seguimiento-page.component';
-import { UsadosSolicitarPageComponent } from './layouts/usados-solicitar-page/usados-solicitar-page.component';
-import { UsadosTerminosPageComponent } from './layouts/usados-terminos-page/usados-terminos-page.component';
+import { DashboardNavComponentComponent } from './modules/dashboard/dashboard-nav-component/dashboard-nav-component.component';
+import { SettingCarsComponent } from './modules/dashboard/components/cars/setting-cars/setting-cars.component';
+import { SettingAdvisorComponent } from './modules/dashboard/components/advisors/setting-advisor/setting-advisor.component';
+import { SettingUsedCarsComponent } from './modules/dashboard/components/used-cars/setting-used-cars/setting-used-cars.component';
+import { AdministratorsComponent } from './modules/dashboard/components/administrators/administrators.component';
+import { SettingCitasComponent } from './modules/dashboard/components/citas/setting-citas/setting-citas.component';
+import { CatalogoPageComponent } from './components/catalogo-page/catalogo-page.component';
 
 const routes: Routes = [
-  { path:'',                redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home',           component: HomePageComponent },
-  { path: 'autos',          component: CarsPageComponent},
-  { path: 'asesores',       component: AdvisorsPageComponent },
-  { path: 'usados',         component: UsedCarsPageComponent, children: [
-    { path: '',             component: UsadosHomePageComponent },
-    { path: 'seguimiento',  component: UsadosSeguimientoPageComponent },
-    { path: 'solicitar',    component: UsadosSolicitarPageComponent },
-    { path: 'terminos',     component: UsadosTerminosPageComponent },
-  ]},
-  { path: 'nosotros',       component: ContactPageComponent },
-  { path: 'login',          component: LoginComponent},
-  { path: '**',             component: PageNotFoundComponent}
+  { path:'',                    redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home',               component: HomePageComponent },
+  { path: 'autos/:id',          component: CarsPageComponent},
+  { path: 'asesores',           component: AdvisorsPageComponent,  },
+  { path: 'usados',             component: UsedCarsPageComponent },
+  { path: 'catalogo',           component: CatalogoPageComponent },
+  { path: 'nosotros',           component: ContactPageComponent },
+  { path: 'login',              component: LoginComponent },
+  { path: 'dashboard',          component: DashboardNavComponentComponent, 
+    children: [
+      { path: '',               redirectTo: 'cars', pathMatch: 'full' },
+      { path: 'cars',           component: SettingCarsComponent},
+      { path: 'advisors',       component: SettingAdvisorComponent },
+      { path: 'usedCars',       component: SettingUsedCarsComponent },
+      { path: 'citas',          component: SettingCitasComponent },      
+      { path: 'administrators', component: AdministratorsComponent},
+      { path: '**',             redirectTo: 'cars', pathMatch: 'full' },
+    ]},
+  { path: '**',                 component: PageNotFoundComponent}
 ];
 
 @NgModule({

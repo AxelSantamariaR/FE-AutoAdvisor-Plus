@@ -1,0 +1,132 @@
+.container-fluid{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container{
+	background: var(--White);
+	height: 350px;
+	width: 600px;
+}
+
+.container-caja{
+	box-shadow: -11px 11px 1px rgba(0, 0, 0, 0.3);
+}
+
+.product-details {
+	text-align: left;
+	height: 100%;
+	width: 55%;
+}
+
+.information{
+	text-align: justify;
+	font-size: smaller;
+}
+
+.info {
+    background: rgba(27, 26, 26, 0.9);
+    transition: all 0.3s ease-out;
+    transform: translateX(-100%);
+    position: absolute;
+    line-height: 2;
+    text-align: left;
+    color: var(--White);
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.product-image {
+	transition: all 0.3s ease-in-out;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	width:45%;
+	display: inline-block;
+}
+
+.container img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.info h2 {
+	text-align: center
+}
+
+ul li{
+	list-style: square;
+}
+
+.product-image:hover .info{
+	transform: translateX(0);
+}
+
+.product-image:hover img {
+	transition: all 0.3s ease-out;
+}
+
+.product-image:hover img {
+	transform: scale(1.2);
+}
+
+.btn {
+	transform: translateY(0px);
+	transition: 0.2s linear;
+    background: linear-gradient(135deg, #fa782e 8%, #c82930 83%);
+    border-radius: .5rem;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	outline: none;
+	border: none;
+	color: var(--White);
+	padding: 0;
+	margin: 0;
+}
+
+.btn span {
+	transition: transform 0.3s;
+	display: inline-block;
+  	padding: 5px 20px;
+	font-size: 1.1em;
+}
+
+.btn .price, .shopping-cart{
+	background: var(--Green);
+}
+
+.btn .price {
+	transform: translateX(-20%); 
+	padding-right: 10px;
+}
+
+.btn .shopping-cart {
+	transform: translateX(-100%);
+	width: 25%;
+  	position: absolute;
+	background: var(--Green);
+	z-index: 1;
+	left: 0;
+	top: 0;
+}
+
+.btn:hover .shopping-cart {
+	transform: translateX(0%);
+}
+
+mat-icon{
+	font-size: larger;
+	padding-top: .2rem;
+}
+
+.btn:active{
+	transform: scale(1.01);
+	color: var(--White);
+}

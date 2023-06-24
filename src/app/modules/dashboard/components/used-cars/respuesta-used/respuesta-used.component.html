@@ -1,0 +1,20 @@
+<p *ngIf="title !== ''" class="text-center h2 fw-normal">{{title}}</p>
+<div class="card">
+    <img src="../../../../../../assets/img/useds/{{usado.imagen}}.jpg" class="card-img-top w-50 rounded-3 shadow" alt="Car"/>
+    <div class="card-body">
+      <span class="h5 card-title">{{usado.auto}} del {{usado.anio}}</span>
+      <p class="card-text mt-3">
+        <strong>USD {{usado.precio}}</strong><br>
+        {{usado.descripcion}} <br> 
+        Propietario {{usado.nombre}}, Teléfono {{usado.telefono}}, Correo Electrónico {{usado.correo}}
+      </p>
+    </div>
+    <div *ngIf="title !== ''"  class="card-footer d-flex align-items-center justify-content-end  bg-transparent border-0 mt-2">
+      <button class="btn btn-danger btn-sm w-25 mx-3" matDialogClose>
+        <mat-icon>cancel</mat-icon>
+      </button>
+      <button class="btn btn-success btn-sm w-25" (click)="accion()">
+        <mat-icon>{{btn}}</mat-icon>
+      </button>
+    </div>
+</div>

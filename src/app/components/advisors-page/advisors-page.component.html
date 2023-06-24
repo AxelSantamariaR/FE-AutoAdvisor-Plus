@@ -1,3 +1,65 @@
-<app-navbar></app-navbar>
-<p>advisors-page works!</p>
-<app-footer></app-footer>
+<div class="container-fluid w-100 vh-100">
+    <div class="container-fluid container-top w-100 h-auto shadow mt-0">
+        <div class="container w-100">
+            <div class="card shadow-none border-0 rounded-0 bg-transparent">
+  
+                <div class="card-title d-flex justify-content-between mt-3">
+                    <div class="menu d-flex w-100 align-items-center">              
+                        <button class="btn btn-sm btn-menu" type="button" 
+                            data-bs-toggle="offcanvas" 
+                            data-bs-target="#offcanvasWithBothOptions" 
+                            aria-controls="offcanvasWithBothOptions">
+                            <mat-icon>menu</mat-icon>              
+                        </button>
+                        <span class="pb-1 text-menu">Menú</span>
+                    </div>
+                    <div class="menu d-flex w-100 align-items-center justify-content-center">              
+                        <button class="btn btn-sm btn-menu"routerLink="/home">
+                            <mat-icon>directions_car</mat-icon>              
+                        </button>
+                        <span class="pb-1 text-menu">AutoAdvisor +</span>
+                    </div>
+                <div class="w-100"></div>
+            </div>
+  
+            <hr class="my-2 mb-3">
+  
+            <div class="container w-100 h-auto mt-2 mb-4">
+                <div class="row row-cols-1">
+                    <div class="col">
+                        <div class="card shadow-none border-0 bg-transparent">
+                            <div class="card-title">                  
+                                <span class="h1 title-description">
+                                    Nuestros asesores especializados
+                                </span>
+                            </div>
+                            <div class="card-subtitle mt-2">
+                                <span>
+                                    Conoce a nuestros asesores especializados que te brindarán la mejor atención y asesoramiento en todo el proceso de compra de tu vehículo. Ellos están disponibles para responder tus preguntas, proporcionarte información detallada y ayudarte a tomar la mejor decisión.
+                                </span>
+                            </div>     
+                            <div class="card-footer shadow-none border-0 bg-transparent px-0">
+                                <div class="row mt-4 mb-2">
+                                    <div class="col">
+                                        <span class="footer-nota">
+                                            ¡Confía en nuestro equipo de expertos para una experiencia automotriz excepcional!
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>      
+    </div>
+</div>
+<div class="container-fluid w-100 h-auto py-3">
+    <app-card-asesores-page></app-card-asesores-page>
+</div>
+
+<div class="container-fluid w-100 h-auto pt-5">
+    <app-footer></app-footer>
+</div>
+
+<app-nav-menu></app-nav-menu>

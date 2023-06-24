@@ -1,0 +1,99 @@
+<div class="container-fluid w-auto mt-4">
+    <div class="container w-auto">
+        <div class="card shadow-none border-0 rounded-0 bg-transparent">
+            <div class="container mt-2">
+                <div class="row row-cols-2">
+                    <div class="col w-50 p-0 rounded-2">
+                        <img src="https://a-dele.com/wp-content/uploads/2021/06/Personas-comprando-auto-nuevo.jpg" class="img-fluid rounded-2" alt="...">
+                    </div> 
+                    <div class="col w-50 ps-4 mt-4">
+                        <div class="card shadow-none border-0 bg-transparent">
+                            <div class="card-title text-lg-start">                  
+                                <span class="h4 title-description">
+                                    ¡El Auto que acabaste de elegir espera por ti!
+                                    <br>
+                                    <span class="h6">
+                                        Elige la fecha ideal y reserva tu cita hoy mismo.
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="card-body px-0">                
+                                <form [formGroup]="form" (ngSubmit)="submit()">
+                                    <div class="row row-cols-2 ">
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Nombre </mat-label>
+                                                <input type="text" matInput autocomplete="off" formControlName="nombre">
+                                                <mat-icon matPrefix>border_color</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Teléfono </mat-label>
+                                                <input type="tel" matInput autocomplete="tel" formControlName="telefono">
+                                                <mat-icon matPrefix>call</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Correo </mat-label>
+                                                <input type="" matInput autocomplete="off" formControlName="correo">
+                                                <mat-icon matPrefix>alternate_email</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Asesores </mat-label>
+                                                <mat-select formControlName="idAsesor">
+                                                    <mat-option *ngFor="let item of asesores" [value]="item.id"> {{ item.nombres }}</mat-option>
+                                                </mat-select>
+                                                <mat-icon matPrefix>supervised_user_circle</mat-icon>
+                                            </mat-form-field>
+                                          </div>
+                                          
+                                    </div>          
+                                    
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Hora </mat-label>
+                                                <mat-select formControlName="hora">
+                                                    <mat-option value="09:00"> 09:00 A.M </mat-option>
+                                                    <mat-option value="10:00"> 10:00 A.M </mat-option>
+                                                    <mat-option value="11:00"> 11:00 A.M </mat-option>
+                                                    <mat-option value="13:00"> 13:00 P.M </mat-option>
+                                                    <mat-option value="14:00"> 14:00 P.M </mat-option>
+                                                    <mat-option value="15:00"> 15:00 P.M </mat-option>
+                                                    <mat-option value="16:00"> 16:00 P.M </mat-option>
+                                                </mat-select>
+                                                <mat-icon matPrefix>supervised_user_circle</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label> Fecha </mat-label>
+                                                <input type="date" matInput autocomplete="off" formControlName="fecha">
+                                                <mat-icon matPrefix>calendar_month</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+           
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-success btn-sm btn-send w-100" type="submit" >
+                                                <mat-icon>send</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>         
+                                </form>
+                            </div>   
+                        </div>
+                    </div>           
+                </div>
+            </div>        
+        </div>      
+    </div>
+</div>
