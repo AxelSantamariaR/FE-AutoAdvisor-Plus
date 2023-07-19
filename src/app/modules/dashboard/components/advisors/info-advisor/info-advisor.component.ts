@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IAsesores } from 'src/app/interfaces/iasesores';
+import { IAsesor } from 'src/app/interfaces/asesores-interfaces';
 
 @Component({
   selector: 'app-info-advisor',
@@ -10,6 +10,6 @@ import { IAsesores } from 'src/app/interfaces/iasesores';
 export class InfoAdvisorComponent {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: IAsesores
+    @Inject(MAT_DIALOG_DATA) public data: IAsesor
   ) { }
 }

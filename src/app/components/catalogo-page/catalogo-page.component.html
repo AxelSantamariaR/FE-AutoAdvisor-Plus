@@ -56,7 +56,13 @@
     </div>
 </div>
 <div class="container-fluid w-100 h-auto py-3 mt-5">
+
+    <div class="container-fluid px-5 mb-5" *ngIf="loading">
+        <mat-progress-bar color="warn" mode="indeterminate"></mat-progress-bar>
+    </div>
+
     <div class="container-horizontal">
+        
         <div class="container ms-2" *ngFor="let items of autos">
             <div class="card">
                 <div class="card-head">
@@ -79,7 +85,7 @@
                     
                     <div class="product-properties">
                         <span class="product-color">
-                            <button class="btn btn-outline-success ms-3 mt-3" [routerLink]="['/autos',items.id]">
+                            <button class="btn btn-outline-success ms-3 mt-3" [routerLink]="['/autos',items.id_Auto]">
                                 Me Interesa
                             </button>
                         </span>

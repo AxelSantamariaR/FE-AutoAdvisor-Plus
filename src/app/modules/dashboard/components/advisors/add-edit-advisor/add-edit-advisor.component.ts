@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IAsesores } from 'src/app/interfaces/iasesores';
-import { AsesoresServicesService } from 'src/app/services/asesores-services.service';
+import { IAsesor } from 'src/app/interfaces/asesores-interfaces';
+import { AsesoresService } from 'src/app/services/asesores.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { Respuesta } from 'src/app/shared/respuesta';
 
 @Component({
   selector: 'app-add-edit-advisor',
@@ -19,10 +20,10 @@ export class AddEditAdvisorComponent implements OnInit{
   
   constructor(
     private dialogRef: MatDialogRef<AddEditAdvisorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IAsesores,
+    @Inject(MAT_DIALOG_DATA) public data: IAsesor,
     private fb: FormBuilder,
     private toast: ToastService,
-    private _asesoresServices: AsesoresServicesService
+    private _asesoresServices: AsesoresService
   ) {
     this.form = this.fb.group({
       nombres:            ['', Validators.required],
@@ -69,8 +70,7 @@ export class AddEditAdvisorComponent implements OnInit{
       return
     }
 
-    const asesor: IAsesores = {
-      id:                 (this.data) ? this.data.id : this._asesoresServices.asesores.length+1,
+    const asesor: IAsesor = {  
       nombres:            this.form.value.nombres,
       descripcion:        this.form.value.descripcion,
       aniosExperiencia:   this.form.value.aniosExperiencia,
@@ -79,19 +79,43 @@ export class AddEditAdvisorComponent implements OnInit{
       idiomas:            this.form.value.idiomas,
       correo:             this.form.value.correo,
       telefono:           this.form.value.telefono,
-      imagen:             this.fileName,
-      estado:             true
+      imagen:             this.fileName
     }
 
     if(this.data){
-      this._asesoresServices.updateAsesor(asesor)
-      this.dialogRef.close("actualizado")
+      asesor.id_Asesor = this.data.id_Asesor;
+      this._asesoresServices.updateAsesor(asesor).subscribe({
+        next: (respuesta: Respuesta) => {
+          const datosCierre = {
+            title: respuesta.title,
+            message: respuesta.message
+          };
+          this.dialogRef.close(datosCierre)
+        },
+        error: (respuesta: Respuesta) => {
+          console.log(respuesta);
+          
+          this.dialogRef.close("Error");
+        }
+      })
       return
     }
 
     if(!this.data){
-      this._asesoresServices.addAsesor(asesor)
-      this.dialogRef.close("agregado")
+      this._asesoresServices.postAsesor(asesor).subscribe({
+        next: (respuesta: Respuesta) => {
+          const datosCierre = {
+            title: respuesta.title,
+            message: respuesta.message
+          };
+          this.dialogRef.close(datosCierre)
+        },
+        error: (respuesta: Respuesta) => {
+          console.log(respuesta);
+          
+          this.dialogRef.close("Error");
+        }
+      })
       return
     }
 

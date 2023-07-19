@@ -1,13 +1,13 @@
-export interface IAsesores {
-    id:                 number,
+export interface IAsesor {
+    id_Asesor?:         number,
     nombres:            string,
     descripcion:        string,
     aniosExperiencia:   number,
-    especialidad:       string,
+    especialidad:       number,
     idiomas:            string,
     fechaNac:           Date,
     correo:             string,
     telefono:           string,
     imagen:             string,
-    estado:             boolean
+    estado?:            boolean
 }

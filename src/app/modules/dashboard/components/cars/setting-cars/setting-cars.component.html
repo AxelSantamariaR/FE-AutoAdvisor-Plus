@@ -4,6 +4,8 @@
             <span class="h3 title w-100">Gestionar Autos</span>
         </div>
         <div class="card-content">
+            <mat-progress-bar color="warn" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
             <div class="row row-cols-2">
                 <div class="col-10">
                     <mat-form-field appearance="outline" class="w-100">

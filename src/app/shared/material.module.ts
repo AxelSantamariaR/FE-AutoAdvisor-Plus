@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [],
@@ -39,7 +40,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSidenavModule,
     MatIconModule,
     MatListModule,  
-    MatSelectModule
+    MatSelectModule,
+    MatProgressBarModule
   ]
 })
 export class MaterialModule { }

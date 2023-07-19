@@ -1,9 +1,13 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ICita } from 'src/app/interfaces/icita';
-import { CitaServicesService } from 'src/app/services/cita-services.service';
+import { Router } from '@angular/router';
+import { ICita, ICitaPut } from 'src/app/interfaces/citas-interfaces';
+import { IHorarioCombo } from 'src/app/interfaces/combos-interfaces';
+import { CitaService } from 'src/app/services/cita.service';
+import { ComboService } from 'src/app/services/combo.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { Respuesta } from 'src/app/shared/respuesta';
 
 @Component({
   selector: 'app-edit-delete-citas',
@@ -17,13 +21,17 @@ export class EditDeleteCitasComponent {
   iconName: string = "edit";
   bandera!: string;
   cita! : ICita;
+  loading: boolean = false
+  horarios!: IHorarioCombo[]
 
   constructor(
     private dialogRef: MatDialogRef<EditDeleteCitasComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private toast: ToastService,
-    private _citasServices: CitaServicesService
+    private _citasServices: CitaService,
+    private _comboServices: ComboService,
+    private router: Router
   ) {
     this.form = this.fb.group({
       hora:             ['', Validators.required],
@@ -31,7 +39,24 @@ export class EditDeleteCitasComponent {
     })
   }
 
+  
+  llenarHorarios() {
+    this.loading = true;
+    this._comboServices.getComboHorarios().subscribe({
+      next: (data) => {
+        this.horarios = data
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
+        this.router.navigate([''])
+        this.toast.error("Problemas con el servidor","Error")
+      }
+    })
+  }  
+
   ngOnInit(){
+    this.llenarHorarios() 
     this.cita     = this.data.objeto;
     this.bandera  = this.data.accion;
   
@@ -39,15 +64,6 @@ export class EditDeleteCitasComponent {
       this.title              = "Eliminar Cita";
       this.iconName           = "delete";
       return
-    }
-
-    if(this.bandera === "actualizar"){  
-      this.form.patchValue({
-        hora:     this.cita.hora,
-        fecha:    this.cita.fecha
-      })
-      console.log(this.cita);
-      
     }
   }
 
@@ -57,30 +73,39 @@ export class EditDeleteCitasComponent {
       return
     }
 
-    const agenda: ICita = {
-      id:               this.cita.id,
-      auto: {
-        id:             this.cita.auto.id,
-        nombre:         this.cita.auto.nombre
-      },
-      nombre:           this.cita.nombre,
-      telefono:         this.cita.telefono,
-      correo:           this.cita.correo,
-      hora:             this.form.value.hora,
-      fecha:            this.form.value.fecha,
-      asesor: {
-        id:             this.cita.asesor.id,
-        nombre:         this.cita.asesor.nombre
-      }, 
-      estado:           true
+    const agenda: ICitaPut = {
+      id_Cita:                this.cita.id_Cita,
+      Id_Horario:             this.form.value.hora,
+      fecha:                  this.form.value.fecha  
     }
-    this._citasServices.updateCita(agenda)
-    this.dialogRef.close("actualizado")
+    this._citasServices.updateCita(agenda).subscribe({
+      next: (respuesta: Respuesta) => {
+        const datosCierre = {
+          title: respuesta.title,
+          message: respuesta.message
+        };
+        this.dialogRef.close(datosCierre)
+        return
+      },
+      error: () => {
+        this.dialogRef.close("Error");
+      }
+    })
   }
 
   deleteCita(){
-    this._citasServices.deleteCita(this.cita.id)
-    this.dialogRef.close("eliminado")
+    this._citasServices.deleteCita(this.cita.id_Cita).subscribe({
+      next: (respuesta: Respuesta) => {
+        const datosCierre = {
+          title: respuesta.title,
+          message: respuesta.message
+        };
+        this.dialogRef.close(datosCierre)
+      },
+      error: () => {
+        this.dialogRef.close("Error");
+      }
+    })
   }
   
 }

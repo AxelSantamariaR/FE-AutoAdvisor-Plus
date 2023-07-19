@@ -3,10 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { IUsados } from 'src/app/interfaces/iusados';
 import { ToastService } from 'src/app/services/toast.service';
-import { UsadosServicesService } from 'src/app/services/usados-services.service';
 import { RespuestaUsedComponent } from '../respuesta-used/respuesta-used.component';
+import { IUsados } from 'src/app/interfaces/usados-interfaces';
+import { UsadoService } from 'src/app/services/usado.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-setting-used-cars',
@@ -17,11 +18,13 @@ export class SettingUsedCarsComponent implements OnInit{
   
   displayedColumns: string[] = ['auto', 'año', 'usuario', 'telefono', 'estado', 'accion'];
   dataSource = new MatTableDataSource<IUsados>();
+  loading: boolean = false;
 
   constructor(
-    private _usadosService: UsadosServicesService,
+    private _usadosService: UsadoService,
+    private toast: ToastService,
     public dialog: MatDialog,
-    private toast: ToastService
+    private router: Router
   ) { }
 
   ngOnInit(){
@@ -47,8 +50,21 @@ export class SettingUsedCarsComponent implements OnInit{
     }
   } 
   
+
   listUsados(){
-    this.dataSource.data = this._usadosService.getUsados();    
+    this.loading = true;
+    this._usadosService.getUsados().subscribe({
+      next: (data) =>{              
+        this.dataSource.data = data;
+        this.loading = false;
+        console.log(data);
+        
+      },
+      error: (e) => {
+        this.router.navigate([''])
+        this.toast.error("Problemas con el servidor","Error")
+      }
+    })
   }
 
   openAceptar(usado: IUsados, opcion: string){
@@ -61,11 +77,15 @@ export class SettingUsedCarsComponent implements OnInit{
         opcion
       }
     }).afterClosed().subscribe(
-      (data) => {
-        if(data == "aceptado"){
+      (datosCierre) => {
+        if(datosCierre == "Error" || datosCierre.title === 'Error'){
           this.listUsados();
-          this.toast.success("Auto aceptado","Enhorabuena")
+          this.toast.error("Problemas con el servidor","Error, intente luego")    
           return
+        }
+        if((datosCierre.title == "Enhorabuena")){
+          this.listUsados();
+          this.toast.success(`${datosCierre.message}`,`${datosCierre.title}`);
         }
       }
     )
@@ -81,11 +101,15 @@ export class SettingUsedCarsComponent implements OnInit{
         opcion
       }
     }).afterClosed().subscribe(
-      (data) => {
-        if(data == "rechazado"){
+      (datosCierre) => {
+        if(datosCierre == "Error" || datosCierre.title === 'Error'){
           this.listUsados();
-          this.toast.success("Rechazado exitosamente","Enhorabuena")
+          this.toast.error("Problemas con el servidor","Error, intente luego")    
           return
+        }
+        if((datosCierre.title == "Enhorabuena")){
+          this.listUsados();
+          this.toast.success(`${datosCierre.message}`,`${datosCierre.title}`);
         }
       }
     )

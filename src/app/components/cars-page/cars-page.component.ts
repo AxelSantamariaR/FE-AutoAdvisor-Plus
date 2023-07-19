@@ -1,7 +1,8 @@
-import { AutosServicesService } from 'src/app/services/autos-services.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IAutos } from 'src/app/interfaces/iautos';
+import { INuevo } from 'src/app/interfaces/nuevos-interfaces';
+import { NuevoService } from 'src/app/services/nuevo.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-cars-page',
@@ -9,17 +10,35 @@ import { IAutos } from 'src/app/interfaces/iautos';
   styleUrls: ['./cars-page.component.css']
 })
 export class CarsPageComponent implements OnInit{
-  auto!: IAutos;
+  auto!: INuevo
+  loading: boolean = false
 
   constructor(
     private route: ActivatedRoute,
-    private _autosServices: AutosServicesService
+    private router: Router,
+    private toast: ToastService,
+    private _autosServices: NuevoService
     ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       const id = params['id'];
-      this.auto = this._autosServices.searchId(id);     
+      this.loading = true
+      this._autosServices.getAutoId(id).subscribe({
+        next: (value) => {
+          if(value == null){
+            this.router.navigate([''])
+            this.toast.error("Auto no existe","Error")    
+            return
+          }
+          this.auto = value;
+          this.loading = false
+        },
+        error: () => {
+          this.router.navigate([''])
+          this.toast.error("Ruta invalida","Error")          
+        }
+      })   
     });
   }
 }

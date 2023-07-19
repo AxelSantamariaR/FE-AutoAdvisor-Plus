@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { IAsesores } from 'src/app/interfaces/iasesores';
-import { AsesoresServicesService } from 'src/app/services/asesores-services.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { AsesoresSendCorreoComponent } from '../asesores-send-correo/asesores-send-correo.component';
+import { IAsesor } from 'src/app/interfaces/asesores-interfaces';
+import { AsesoresService } from 'src/app/services/asesores.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-asesores-page',
@@ -11,19 +12,38 @@ import { AsesoresSendCorreoComponent } from '../asesores-send-correo/asesores-se
   styleUrls: ['./card-asesores-page.component.css']
 })
 export class CardAsesoresPageComponent implements OnInit{
-  asesores!: IAsesores[];
+  asesores!: IAsesor[];
+  loading: boolean = false;
 
   constructor(
-    private _asesoresServices: AsesoresServicesService,
+    private _asesoresServices: AsesoresService,
     public dialog: MatDialog,
+    private router: Router,
     private toast: ToastService
   ) { }
 
   ngOnInit(){
-    this.asesores = this._asesoresServices.getAsesores();
+    this.llenarAsesores();
   }
 
-  openEmail(asesor: IAsesores){
+  
+  llenarAsesores() {
+    this.loading = true;
+    this._asesoresServices.getAsesores().subscribe({
+      next: (data) => {        
+        this.asesores = data
+        this.loading = false;
+      },
+      error: () => {
+        this.router.navigate([''])
+        this.loading = false;
+        this.toast.error("Problemas con el servidor","Error")
+      }
+    })
+  }
+
+
+  openEmail(asesor: IAsesor){
     this.dialog.open(AsesoresSendCorreoComponent,{
       autoFocus: false,
       width: '30%',

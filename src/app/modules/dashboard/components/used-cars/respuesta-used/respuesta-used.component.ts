@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IUsados } from 'src/app/interfaces/iusados';
-import { UsadosServicesService } from 'src/app/services/usados-services.service';
+import { IUsados } from 'src/app/interfaces/usados-interfaces';
+import { UsadoService } from 'src/app/services/usado.service';
+import { Respuesta } from 'src/app/shared/respuesta';
 
 @Component({
   selector: 'app-respuesta-used',
@@ -13,9 +14,10 @@ export class RespuestaUsedComponent implements OnInit {
   opcion: string;
   title: string = "Aceptar Oferta";
   btn: string = "check_circle";
+  loading: boolean = false;
 
   constructor(
-    private _usadosServices: UsadosServicesService,
+    private _usadosServices: UsadoService,
     private dialogRef: MatDialogRef<RespuestaUsedComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -36,16 +38,38 @@ export class RespuestaUsedComponent implements OnInit {
   }
 
   accion(){
-    if(this.title === "Aceptar Oferta"){
-      this._usadosServices.acceptarUsados(this.usado.id)
-      this.dialogRef.close("aceptado")
-      return
-    }
-
-    if(this.title === "Rechazar Oferta"){
-      this._usadosServices.rechazarUsados(this.usado.id)
-      this.dialogRef.close("rechazado")
-      return
-    }
+    if(this.usado.id_Auto !== undefined){
+      if(this.title === "Aceptar Oferta"){
+        this._usadosServices.putAceptar(this.usado.id_Auto).subscribe({
+          next: (respuesta: Respuesta) => {
+            const datosCierre = {
+              title: respuesta.title,
+              message: respuesta.message
+            };
+            this.dialogRef.close(datosCierre)
+          },
+          error: () => {
+            this.dialogRef.close("Error");
+          }
+        })
+        return
+      }
+  
+      if(this.title === "Rechazar Oferta"){
+        this._usadosServices.putRechazar(this.usado.id_Auto).subscribe({
+          next: (respuesta: Respuesta) => {
+            const datosCierre = {
+              title: respuesta.title,
+              message: respuesta.message
+            };
+            this.dialogRef.close(datosCierre)
+          },
+          error: () => {
+            this.dialogRef.close("Error");
+          }
+        })
+        return
+      }
+    }    
   }
 }

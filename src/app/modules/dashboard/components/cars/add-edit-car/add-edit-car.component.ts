@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IAutos } from 'src/app/interfaces/iautos';
-import { AutosServicesService } from 'src/app/services/autos-services.service';
+import { INuevo } from 'src/app/interfaces/nuevos-interfaces';
+import { NuevoService } from 'src/app/services/nuevo.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { Respuesta } from 'src/app/shared/respuesta';
 
 @Component({
   selector: 'app-add-edit-car',
@@ -19,10 +20,10 @@ export class AddEditCarComponent implements OnInit{
 
   constructor(
     private dialogRef: MatDialogRef<AddEditCarComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IAutos,
+    @Inject(MAT_DIALOG_DATA) public data: INuevo,
     private fb: FormBuilder,
     private toast: ToastService,
-    private _autosServices: AutosServicesService
+    private _autosServices: NuevoService
     ) {
     this.form = this.fb.group({
       nombre:          ['', Validators.required],
@@ -67,8 +68,7 @@ export class AddEditCarComponent implements OnInit{
       return
     }
 
-    const auto: IAutos = {
-      id:                 (this.data) ? this.data.id : this._autosServices.autos.length+1,
+    const auto: INuevo = {
       nombre:             this.form.value.nombre,
       descripcion:        this.form.value.descripcion,
       marca:              this.form.value.marca,
@@ -76,23 +76,42 @@ export class AddEditCarComponent implements OnInit{
       anio:               this.form.value.anio,
       edicion:            this.form.value.edicion,
       precio:             this.form.value.precio,
-      imagen:             this.fileName,
-      estado:             true
+      imagen:             this.fileName
     }
 
-    if(this.data){
-      this._autosServices.updateAuto(auto)
-      this.dialogRef.close("actualizado")
+    if(this.data){      
+      auto.id_Auto = this.data.id_Auto;
+      this._autosServices.updateAuto(auto).subscribe({
+        next: (respuesta: Respuesta) => {
+          const datosCierre = {
+            title: respuesta.title,
+            message: respuesta.message
+          };
+          this.dialogRef.close(datosCierre)
+        },
+        error: () => {
+          this.dialogRef.close("Error");
+        }
+      })
       return
     }
 
     if(!this.data){
-      this._autosServices.addAuto(auto)
-      this.dialogRef.close("agregado")
+      this._autosServices.postAuto(auto).subscribe({
+        next: (respuesta: Respuesta) => {
+          const datosCierre = {
+            title: respuesta.title,
+            message: respuesta.message
+          };
+          this.dialogRef.close(datosCierre)
+        },
+        error: () => {
+          this.dialogRef.close("Error");
+        }
+      })
       return
     }
-
-    this.toast.error("Ha ocurrido un error","Intente luego")
+    this.dialogRef.close("Error");
     
   }
 }

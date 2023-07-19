@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ICita } from 'src/app/interfaces/icita';
+import { ICita } from 'src/app/interfaces/citas-interfaces';
 
 @Component({
   selector: 'app-info-citas',

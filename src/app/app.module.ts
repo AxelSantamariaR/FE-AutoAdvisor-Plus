@@ -41,6 +41,7 @@ import { SettingCitasComponent } from './modules/dashboard/components/citas/sett
 import { EditDeleteCitasComponent } from './modules/dashboard/components/citas/edit-delete-citas/edit-delete-citas.component';
 import { InfoCitasComponent } from './modules/dashboard/components/citas/info-citas/info-citas.component';
 import { CatalogoPageComponent } from './components/catalogo-page/catalogo-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { CatalogoPageComponent } from './components/catalogo-page/catalogo-page.
     BrowserAnimationsModule,
     NgbModule,
     ReactiveFormsModule,
+    HttpClientModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,

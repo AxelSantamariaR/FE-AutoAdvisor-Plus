@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IUsados } from 'src/app/interfaces/iusados';
+import { IUsados } from 'src/app/interfaces/usados-interfaces';
 import { ToastService } from 'src/app/services/toast.service';
-import { UsadosServicesService } from 'src/app/services/usados-services.service';
+import { UsadoService } from 'src/app/services/usado.service';
+import { Respuesta } from 'src/app/shared/respuesta';
 
 @Component({
   selector: 'app-used-card-form',
@@ -19,7 +20,7 @@ export class UsedCardFormComponent {
     private fb: FormBuilder,
     private toast: ToastService,
     private router: Router,
-    private _usadosServices: UsadosServicesService
+    private _usadosServices: UsadoService
     ) {
     this.form = this.fb.group({
       nombre:          ['', Validators.required],
@@ -48,20 +49,25 @@ export class UsedCardFormComponent {
     }
 
     const auto: IUsados = {
-      id:                 this._usadosServices.usados.length+1,
-      nombre:             this.form.value.nombre,
+      nombre:             this.form.value.auto,
       telefono:           this.form.value.telefono,
       correo:             this.form.value.correo,
-      auto:               this.form.value.auto,
+      nombreVendedor:     this.form.value.nombre,
       anio:               this.form.value.anio,
       precio:             this.form.value.precio,
       descripcion:        this.form.value.descripcion,
-      imagen:             this.fileName,
-      estado:             0
+      imagen:             this.fileName
     }
 
-    this._usadosServices.addUsados(auto)
+    this._usadosServices.postUsado(auto).subscribe({
+      next: (respuesta: Respuesta) => {        
+        this.toast.success(respuesta.message,respuesta.title);  
+      },
+      error: () => {
+        this.toast.success("No se pudo procesar su solicitud","Error");
+      }
+    })
     this.router.navigate(['/home'])
-    this.toast.success("Pronto nos comunicaremos contigo","Enhorabuena");
+
   }
 }

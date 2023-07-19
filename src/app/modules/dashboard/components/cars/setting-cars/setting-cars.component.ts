@@ -3,12 +3,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { IAutos } from 'src/app/interfaces/iautos';
-import { AutosServicesService } from 'src/app/services/autos-services.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { AddEditCarComponent } from '../add-edit-car/add-edit-car.component';
 import { InfoCarComponent } from '../info-car/info-car.component';
 import { DeleteCarComponent } from '../delete-car/delete-car.component';
+import { NuevoService } from 'src/app/services/nuevo.service';
+import { INuevo } from 'src/app/interfaces/nuevos-interfaces';
+import { Router } from '@angular/router';
  
 @Component({
   selector: 'app-setting-cars',
@@ -18,12 +19,14 @@ import { DeleteCarComponent } from '../delete-car/delete-car.component';
 export class SettingCarsComponent implements OnInit{
   
   displayedColumns: string[] = ['nombre', 'marca', 'anio', 'precio', 'accion'];
-  dataSource = new MatTableDataSource<IAutos>();
+  dataSource = new MatTableDataSource<INuevo>();
+  loading: boolean = false;
 
   constructor(
-    private _autosService: AutosServicesService,
+    private _autosService: NuevoService,
     public dialog: MatDialog,
-    private toast: ToastService
+    private toast: ToastService,
+    private router: Router
   ) { }
 
   ngOnInit(){
@@ -50,7 +53,17 @@ export class SettingCarsComponent implements OnInit{
   } 
   
   listAutos(){
-    this.dataSource.data = this._autosService.getAutos();
+    this.loading = true;
+    this._autosService.getAutosAdmin().subscribe({
+      next: (data) =>{              
+        this.dataSource.data = data;
+        this.loading = false;
+      },
+      error: (e) => {
+        this.router.navigate([''])
+        this.toast.error("Problemas con el servidor","Error")
+      }
+    })
   }
 
   openAdd(){
@@ -59,50 +72,62 @@ export class SettingCarsComponent implements OnInit{
       disableClose: true,
       width: '60%',
     }).afterClosed().subscribe(
-      (data) => {
-        if(data == "agregado"){
+      (datosCierre) => {
+        if(datosCierre == "Error" || datosCierre.title === 'Error'){
           this.listAutos();
-          this.toast.success("Agregado exitosamente","Enhorabuena")
+          this.toast.error("Problemas con el servidor","Error, intente luego")    
           return
+        }
+        if((datosCierre.title == "Enhorabuena")){
+          this.listAutos();
+          this.toast.success(`${datosCierre.message}`,`${datosCierre.title}`);
         }
       }
     )
   }
 
-  openEdit(auto: IAutos){
+  openEdit(auto: INuevo){
     this.dialog.open(AddEditCarComponent,{
       autoFocus: false,
       disableClose: true,
       width: '50%',
       data: auto
     }).afterClosed().subscribe(
-      (data) => {
-        if(data == "actualizado"){
+      (datosCierre) => {
+        if(datosCierre == "Error" || datosCierre.title === 'Error'){
           this.listAutos();
-          this.toast.info("Actualizado exitosamente","Enhorabuena")
+          this.toast.error("Problemas con el servidor","Error, intente luego")    
           return
+        }
+        if((datosCierre.title == "Enhorabuena")){
+          this.listAutos();
+          this.toast.info(`${datosCierre.message}`,`${datosCierre.title}`);
         }
       }
     )
   }
 
-  openDelete(auto: IAutos){
+  openDelete(auto: INuevo){
     this.dialog.open(DeleteCarComponent,{
       autoFocus: false,
       width: 'auto',
       data: auto
     }).afterClosed().subscribe(
-      (data) => {
-        if(data == "eliminado"){
+      (datosCierre) => {
+        if(datosCierre == "Error" || datosCierre.title === 'Error'){
           this.listAutos();
-          this.toast.warning("Eliminado exitosamente","Acción completada")
+          this.toast.error("Problemas con el servidor","Error, intente luego")    
           return
+        }
+        if((datosCierre.title == "Enhorabuena")){
+          this.listAutos();
+          this.toast.warning(`${datosCierre.message}`,`${datosCierre.title}`);
         }
       }
     )
   }
 
-  openInfo(auto: IAutos){
+  openInfo(auto: INuevo){
     this.dialog.open(InfoCarComponent,{
       width: '50%',
       data: auto

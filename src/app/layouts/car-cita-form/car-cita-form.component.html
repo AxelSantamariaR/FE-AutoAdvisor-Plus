@@ -45,29 +45,25 @@
                                             </mat-form-field>
                                         </div>
                                         <div class="col">
+                                            <mat-progress-bar color="warn" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
                                             <mat-form-field appearance="outline">
                                                 <mat-label> Asesores </mat-label>
                                                 <mat-select formControlName="idAsesor">
-                                                    <mat-option *ngFor="let item of asesores" [value]="item.id"> {{ item.nombres }}</mat-option>
+                                                    <mat-option *ngFor="let item of asesores" [value]="item.id_Asesor"> {{ item.nombres }}</mat-option>
                                                 </mat-select>
                                                 <mat-icon matPrefix>supervised_user_circle</mat-icon>
                                             </mat-form-field>
-                                          </div>
+                                        </div>
                                           
                                     </div>          
                                     
                                     <div class="row row-cols-2">
                                         <div class="col">
+                                            <mat-progress-bar color="warn" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
                                             <mat-form-field appearance="outline">
                                                 <mat-label> Hora </mat-label>
                                                 <mat-select formControlName="hora">
-                                                    <mat-option value="09:00"> 09:00 A.M </mat-option>
-                                                    <mat-option value="10:00"> 10:00 A.M </mat-option>
-                                                    <mat-option value="11:00"> 11:00 A.M </mat-option>
-                                                    <mat-option value="13:00"> 13:00 P.M </mat-option>
-                                                    <mat-option value="14:00"> 14:00 P.M </mat-option>
-                                                    <mat-option value="15:00"> 15:00 P.M </mat-option>
-                                                    <mat-option value="16:00"> 16:00 P.M </mat-option>
+                                                    <mat-option *ngFor="let item of horarios" [value]="item.id_Horario"> {{ item.hora }}</mat-option>
                                                 </mat-select>
                                                 <mat-icon matPrefix>supervised_user_circle</mat-icon>
                                             </mat-form-field>

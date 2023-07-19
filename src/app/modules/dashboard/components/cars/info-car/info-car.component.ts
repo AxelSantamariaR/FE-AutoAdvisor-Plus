@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IAutos } from 'src/app/interfaces/iautos';
+import { INuevo } from 'src/app/interfaces/nuevos-interfaces';
 
 @Component({
   selector: 'app-info-car',
@@ -10,6 +10,6 @@ import { IAutos } from 'src/app/interfaces/iautos';
 export class InfoCarComponent {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: IAutos
+    @Inject(MAT_DIALOG_DATA) public data: INuevo
   ) { }
 }

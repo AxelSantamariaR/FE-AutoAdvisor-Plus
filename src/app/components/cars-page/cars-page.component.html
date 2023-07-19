@@ -2,7 +2,6 @@
   <div class="container-fluid container-top w-100 h-auto shadow mt-0 pb-5">
     <div class="container w-100">
       <div class="card shadow-none border-0 rounded-0 bg-transparent">
-
         <div class="card-title d-flex justify-content-between mt-3">          
           <div class="menu d-flex w-100 align-items-center">              
             <button class="btn btn-sm btn-menu" type="button"  data-bs-toggle="offcanvas"  data-bs-target="#offcanvasWithBothOptions">
@@ -21,10 +20,12 @@
           <div class="w-100"></div>
         </div>
 
-        <hr class="my-2 mb-3">
+        <hr class="my-2 mb-3" *ngIf="!loading">
+        <mat-progress-bar color="warn" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 
         <div class="container w-100 h-auto mt-2">
-          <div class="row row-cols-2">
+          
+          <div class="row row-cols-2" *ngIf="auto">
             <div class="col">
               <div class="card shadow-none border-0 bg-transparent">
 
@@ -70,8 +71,8 @@
     </div>
   </div>
 
-  <div class="container-fluid w-100 h-auto py-5 pb-3">
-    <app-car-cita-form [autoId]="auto.id" [autoNombre]="auto.nombre"></app-car-cita-form>
+  <div class="container-fluid w-100 h-auto py-5 pb-3"  *ngIf="auto">
+    <app-car-cita-form [autoId]="auto.id_Auto" [autoNombre]="auto.nombre"></app-car-cita-form>
   </div>
     
   <div class="container-fluid w-100 h-auto pt-3">

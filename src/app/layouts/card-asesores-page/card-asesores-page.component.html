@@ -1,4 +1,6 @@
 <div class="container-fluid">
+	<mat-progress-bar color="warn" class="mt-4" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
 	<div class="container container-caja text-center rounded-3 overflow-hidden my-5 p-0" *ngFor="let items of asesores">
 		<div class="product-details position-relative overflow-hidden py-4 px-2 float-start">
 			<span class="h3 px-3">{{items.nombres}}</span>

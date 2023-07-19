@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IAsesores } from 'src/app/interfaces/iasesores';
-import { AsesoresServicesService } from 'src/app/services/asesores-services.service';
+import { IAsesor } from 'src/app/interfaces/asesores-interfaces';
+import { AsesoresService } from 'src/app/services/asesores.service';
+import { Respuesta } from 'src/app/shared/respuesta';
 
 @Component({
   selector: 'app-delete-advisor',
@@ -12,12 +13,28 @@ export class DeleteAdvisorComponent {
 
   constructor(
     private dialogRef: MatDialogRef<DeleteAdvisorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IAsesores,
-    private _asesoresService: AsesoresServicesService
+    @Inject(MAT_DIALOG_DATA) public data: IAsesor,
+    private _asesoresService: AsesoresService
   ) { }
 
+
   delete(){
-    this._asesoresService.deleteAsesor(this.data.id);
-    this.dialogRef.close("eliminado")
+    if(this.data.id_Asesor !== undefined){
+      this._asesoresService.deleteAsesor(this.data.id_Asesor).subscribe({
+        next: (respuesta: Respuesta) => {
+          const datosCierre = {
+            title: respuesta.title,
+            message: respuesta.message
+          };
+          this.dialogRef.close(datosCierre)
+        },
+        error: (respuesta: Respuesta) => {
+          console.log(respuesta);
+          
+          this.dialogRef.close("Error");
+        }
+      })
+    }
   }
+
 }

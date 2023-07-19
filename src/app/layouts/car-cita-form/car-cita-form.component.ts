@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IAsesores } from 'src/app/interfaces/iasesores';
-import { ICita } from 'src/app/interfaces/icita';
-import { AsesoresServicesService } from 'src/app/services/asesores-services.service';
-import { CitaServicesService } from 'src/app/services/cita-services.service';
+import { ICitaPost } from 'src/app/interfaces/citas-interfaces';
+import { IAsesorCombo, IHorarioCombo } from 'src/app/interfaces/combos-interfaces';
+import { CitaService } from 'src/app/services/cita.service';
+import { ComboService } from 'src/app/services/combo.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { Respuesta } from 'src/app/shared/respuesta';
 
 @Component({
   selector: 'app-car-cita-form',
@@ -14,17 +15,19 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class CarCitaFormComponent implements OnInit{
 
-  @Input() autoId!: number;
+  @Input() autoId?: number;
   @Input() autoNombre!: string;
   form: FormGroup;
-  asesores!: IAsesores[];
+  asesores!: IAsesorCombo[];
+  horarios!: IHorarioCombo[];
+  loading: boolean = false; 
 
   constructor(
     private fb: FormBuilder,
     private toast: ToastService,
     private router: Router,
-    private _citasServices: CitaServicesService,
-    private _asesoresServices: AsesoresServicesService
+    private _citasServices: CitaService,
+    private _comboServices: ComboService
     ) {
     this.form = this.fb.group({
       nombre:           ['', Validators.required],
@@ -37,13 +40,39 @@ export class CarCitaFormComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.asesores = this._asesoresServices.getAsesores();    
+    this.llenarAsesores();  
+    this.llenarHorarios();
   }
 
-  nombreAsesor(id: number): string {
-    const asesorEncontrado = this.asesores.find(e => e.id === id);
-    return asesorEncontrado ? asesorEncontrado.nombres : '';
+  llenarAsesores() {
+    this.loading = true;
+    this._comboServices.getComboAsesores().subscribe({
+      next: (data) => {
+        this.asesores = data
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
+        this.router.navigate([''])
+        this.toast.error("Problemas con el servidor","Error")
+      }
+    })
   }
+
+  llenarHorarios() {
+    this.loading = true;
+    this._comboServices.getComboHorarios().subscribe({
+      next: (data) => {
+        this.horarios = data
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
+        this.router.navigate([''])
+        this.toast.error("Problemas con el servidor","Error")
+      }
+    })
+  }  
 
   submit(){
     if(this.form.invalid){
@@ -51,26 +80,33 @@ export class CarCitaFormComponent implements OnInit{
       return
     }
 
-    const agenda: ICita = {
-      id:               this._citasServices.citas.length+1,
-      auto: {
-        id:             this.autoId,
-        nombre:         this.autoNombre
-      },
-      nombre:           this.form.value.nombre,
+    if(this.autoId === undefined){
+      this.toast.error("Intente de nuevo","Error")
+      this.router.navigate(['/home']) 
+      return
+    }
+
+    const cita: ICitaPost = {
+      asesorId_Asesor:      this.form.value.idAsesor,
+      horarioId_Horario:    this.form.value.hora,
+      autoId_Auto:          this.autoId,
+      nombresCliente:       this.form.value.nombre,
       telefono:         this.form.value.telefono,
       correo:           this.form.value.correo,
-      hora:             this.form.value.hora,
-      fecha:            this.form.value.fecha,
-      asesor: {
-        id:             this.form.value.idAsesor,
-        nombre:         this.nombreAsesor(this.form.value.idAsesor)
-      }, 
-      estado:           true
+      fecha:            this.form.value.fecha
     }
-    this._citasServices.addAsesor(agenda)    
-    this.router.navigate(['/home']) 
-    this.toast.success("Te esperamos pronto","Enhorabuena");
+
+    this._citasServices.postCita(cita).subscribe({
+      next: (respuesta: Respuesta) => {
+        this.toast.success(respuesta.message,respuesta.title);
+        this.router.navigate(['/home']) 
+      },
+      error: () => {
+        this.router.navigate(['/home']) 
+        this.toast.error("No se pudo procesar la cita","Error")
+      }
+    })
+    return
   }
   
 }

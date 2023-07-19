@@ -3,12 +3,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { IAsesores } from 'src/app/interfaces/iasesores';
-import { AsesoresServicesService } from 'src/app/services/asesores-services.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { AddEditAdvisorComponent } from '../add-edit-advisor/add-edit-advisor.component';
 import { InfoAdvisorComponent } from '../info-advisor/info-advisor.component';
 import { DeleteAdvisorComponent } from '../delete-advisor/delete-advisor.component';
+import { IAsesor } from 'src/app/interfaces/asesores-interfaces';
+import { AsesoresService } from 'src/app/services/asesores.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-setting-advisor',
@@ -18,16 +19,18 @@ import { DeleteAdvisorComponent } from '../delete-advisor/delete-advisor.compone
 export class SettingAdvisorComponent implements OnInit{
   
   displayedColumns: string[] = ['nombres', 'correo', 'especialidad', 'accion'];
-  dataSource = new MatTableDataSource<IAsesores>();
+  dataSource = new MatTableDataSource<IAsesor>();
+  loading: boolean = false;
 
   constructor(
-    private _asesoresService: AsesoresServicesService,
+    private _asesoresService: AsesoresService,
     public dialog: MatDialog,
-    private toast: ToastService
+    private toast: ToastService,
+    private router: Router
   ) { }
 
   ngOnInit(){
-    this.listAsesores();
+    this.llenarAsesores();
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -49,10 +52,20 @@ export class SettingAdvisorComponent implements OnInit{
     }
   } 
   
-  listAsesores(){
-    this.dataSource.data = this._asesoresService.getAsesores();
-  }  
-
+  llenarAsesores() {
+    this.loading = true;
+    this._asesoresService.getAsesoresAdmin().subscribe({
+      next: (data) => {        
+        this.dataSource.data = data
+        this.loading = false;
+      },
+      error: () => {
+        this.router.navigate([''])
+        this.loading = false;
+        this.toast.error("Problemas con el servidor","Error")
+      }
+    })
+  }
 
   openAdd(){
     this.dialog.open(AddEditAdvisorComponent,{
@@ -60,50 +73,62 @@ export class SettingAdvisorComponent implements OnInit{
       disableClose: true,
       width: '60%',
     }).afterClosed().subscribe(
-      (data) => {
-        if(data == "agregado"){
-          this.listAsesores();
-          this.toast.success("Agregado exitosamente","Enhorabuena")
+      (datosCierre) => {
+        if(datosCierre == "Error" || datosCierre.title === 'Error'){
+          this.llenarAsesores();
+          this.toast.error("Problemas con el servidor","Error, intente luego")    
           return
+        }
+        if((datosCierre.title == "Enhorabuena")){
+          this.llenarAsesores();
+          this.toast.success(`${datosCierre.message}`,`${datosCierre.title}`);
         }
       }
     ) 
   }
 
-  openEdit(asesor: IAsesores){
+  openEdit(asesor: IAsesor){
      this.dialog.open(AddEditAdvisorComponent,{
       autoFocus: false,
       disableClose: true,
       width: '50%',
       data: asesor
     }).afterClosed().subscribe(
-      (data) => {
-        if(data == "actualizado"){
-          this.listAsesores();
-          this.toast.info("Actualizado exitosamente","Enhorabuena")
+      (datosCierre) => {
+        if(datosCierre == "Error" || datosCierre.title === 'Error'){
+          this.llenarAsesores();
+          this.toast.error("Problemas con el servidor","Error, intente luego")    
           return
+        }
+        if((datosCierre.title == "Enhorabuena")){
+          this.llenarAsesores();
+          this.toast.success(`${datosCierre.message}`,`${datosCierre.title}`);
         }
       }
     )
   }
 
-  openDelete(asesor: IAsesores){
+  openDelete(asesor: IAsesor){
      this.dialog.open(DeleteAdvisorComponent,{
       autoFocus: false,
       width: 'auto',
       data: asesor
     }).afterClosed().subscribe(
-      (data) => {
-        if(data == "eliminado"){
-          this.listAsesores();
-          this.toast.warning("Eliminado exitosamente","Acción completada")
+      (datosCierre) => {
+        if(datosCierre == "Error" || datosCierre.title === 'Error'){
+          this.llenarAsesores();
+          this.toast.error("Problemas con el servidor","Error, intente luego")    
           return
+        }
+        if((datosCierre.title == "Enhorabuena")){
+          this.llenarAsesores();
+          this.toast.success(`${datosCierre.message}`,`${datosCierre.title}`);
         }
       }
     )
   }
 
-  openInfo(asesor: IAsesores){
+  openInfo(asesor: IAsesor){
      this.dialog.open(InfoAdvisorComponent,{
       width: 'auto',
       data: asesor

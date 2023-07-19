@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IAsesores } from 'src/app/interfaces/iasesores';
+import { IAsesor } from 'src/app/interfaces/asesores-interfaces';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -11,12 +11,12 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class AsesoresSendCorreoComponent implements OnInit{
 
-  asesor!: IAsesores;
+  asesor!: IAsesor;
   form: FormGroup;
 
   constructor(
     private dialogRef: MatDialogRef<AsesoresSendCorreoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IAsesores,
+    @Inject(MAT_DIALOG_DATA) public data: IAsesor,
     private toast: ToastService,
     private fb: FormBuilder
   ) {
