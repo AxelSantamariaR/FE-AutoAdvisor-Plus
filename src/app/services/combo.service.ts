@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IAsesorCombo, IHorarioCombo } from '../interfaces/combos-interfaces';
+import { IAsesorCombo, IHorarioCombo, IRolesCombo } from '../interfaces/combos-interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,10 @@ export class ComboService {
 
   getComboAsesores(): Observable<IAsesorCombo[]>{
     return this.http.get<IAsesorCombo[]>(`${this.myAppUrl}${this.myApiUrl}asesores`);
+  }
+
+  getComboRoles(): Observable<IRolesCombo[]>{
+    return this.http.get<IRolesCombo[]>(`${this.myAppUrl}${this.myApiUrl}roles`);
   }
 
 }

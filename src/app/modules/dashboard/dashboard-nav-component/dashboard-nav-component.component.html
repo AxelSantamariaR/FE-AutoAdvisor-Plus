@@ -8,14 +8,14 @@
 
         <mat-nav-list>
 
-            <div class="container">
+            <div class="container" *ngIf="modulo === 'Autos' || modulo === 'Administrador'">
                 <button class="btn btn-success" routerLink="/dashboard/cars">
                     <mat-icon>directions_car</mat-icon>
                     <span class="mb-1">Autos</span>
                 </button>
             </div>
 
-            <div class="container">
+            <div class="container" *ngIf="modulo === 'Asesores' || modulo === 'Administrador'">
                 <button class="btn btn-success" routerLink="/dashboard/advisors">
                     <mat-icon>directions_car</mat-icon>
                     <span class="mb-1">Asesores</span>
@@ -23,33 +23,26 @@
             </div>
 
 
-            <div class="container">
+            <div class="container" *ngIf="modulo === 'Usados' || modulo === 'Administrador'">
                 <button class="btn btn-success" routerLink="/dashboard/usedCars">
                     <mat-icon>directions_car</mat-icon>
                     <span class="mb-1">Usados</span>
                 </button>
             </div>
 
-            <div class="container">
+            <div class="container" *ngIf="modulo === 'Citas' || modulo === 'Administrador'">
                 <button class="btn btn-success" routerLink="/dashboard/citas">
                     <mat-icon>event_note</mat-icon>
                     <span class="mb-1">Citas</span>
                 </button>
             </div>
 
-            <div class="container">
+            <div class="container" *ngIf="modulo === 'Administrador'">
                 <button class="btn btn-success" routerLink="/dashboard/administrators">
                     <mat-icon>directions_car</mat-icon>
                     <span class="mb-1">Admin</span>
                 </button>
             </div>            
-
-            <div class="container">
-                <button class="btn-logout d-flex align-items-center" routerLink="">
-                    <mat-icon class="mx-3 ms-0">logout</mat-icon>
-                    <span class="mb-1">Salir</span>
-                </button>
-            </div>
 
         </mat-nav-list>
     </mat-sidenav>
@@ -60,7 +53,17 @@
               *ngIf="isHandset$ | async">
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
-            <span class="text-capitalize">Administrador </span>
+            <span class="text-capitalize"> Bienvenido {{this.nombre}} </span>
+            <span class="example-spacer"></span>
+            <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="cerrarSesion()">
+                    <mat-icon>logout</mat-icon>
+                    <span>Salir</span>
+                </button>
+            </mat-menu>
 
         </mat-toolbar>
         <router-outlet></router-outlet>

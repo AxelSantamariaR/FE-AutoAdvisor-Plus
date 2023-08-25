@@ -5,8 +5,7 @@
 
 .sidenav {
   width: 220px;
-  background: url("../../../../assets/img/banners/fondo-dashboard-leteral.svg") bottom no-repeat;
-  background-size: cover;
+  background-color: #F9FAF4;
   border: none;
 }
 
@@ -34,7 +33,7 @@
 }
 
 .container{
-  margin: 1.2rem 0;
+  margin: 1.5rem 0;
 }
 
 .container span {
@@ -78,15 +77,9 @@
   color: var(--Green);
 }
 
-.btn-logout{
-  background: none;
-  border: none;
-  position: relative;
-  top: 3.5rem;
-  left: 1rem;
-  color: var(--White);
+.example-spacer {
+  flex: 1 1 auto;
 }
-
 
 @media (max-width:957px) {
   .title-nav {

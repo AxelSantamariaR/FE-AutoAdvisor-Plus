@@ -26,13 +26,11 @@ const routes: Routes = [
   { path: 'login',              component: LoginComponent },
   { path: 'dashboard',          component: DashboardNavComponentComponent, 
     children: [
-      { path: '',               redirectTo: 'cars', pathMatch: 'full' },
       { path: 'cars',           component: SettingCarsComponent},
       { path: 'advisors',       component: SettingAdvisorComponent },
       { path: 'usedCars',       component: SettingUsedCarsComponent },
       { path: 'citas',          component: SettingCitasComponent },      
       { path: 'administrators', component: AdministratorsComponent},
-      { path: '**',             redirectTo: 'cars', pathMatch: 'full' },
     ]},
   { path: '**',                 component: PageNotFoundComponent}
 ];

@@ -32,7 +32,7 @@ export class SettingCarsComponent implements OnInit{
   ngOnInit(){
     this.listAutos();
   }
-
+ 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -55,7 +55,7 @@ export class SettingCarsComponent implements OnInit{
   listAutos(){
     this.loading = true;
     this._autosService.getAutosAdmin().subscribe({
-      next: (data) =>{              
+      next: (data) =>{
         this.dataSource.data = data;
         this.loading = false;
       },

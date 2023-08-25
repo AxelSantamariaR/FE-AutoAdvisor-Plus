@@ -7,3 +7,8 @@ export interface IHorarioCombo {
     id_Horario:     number,
     hora:           string
 }
+
+export interface IRolesCombo {
+    id:             number,
+    modulo:         string
+}
